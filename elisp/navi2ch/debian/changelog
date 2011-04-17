@@ -1,0 +1,256 @@
+navi2ch-cvs (0.0.20100901-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed, 01 Sep 2010 21:04:59 +0900
+
+navi2ch-cvs (0.0.20020205-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- noname <>  Tue, 5 Feb 2002 09:42:23 +0900
+
+navi2ch-cvs (0.0.20020205-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- noname <>  Tue, 5 Feb 2002 09:39:49 +0900
+
+navi2ch-cvs (0.0.20020204-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- noname <>  Mon, 4 Feb 2002 19:01:37 +0900
+
+navi2ch-cvs (0.0.20020115-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- noname <>  Tue, 15 Jan 2002 13:51:11 +0900
+
+navi2ch-cvs (0.0.20020114-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+  
+  * Changed the order of byte-compile files.
+
+ -- noname <>  Mon, 14 Jan 2002 18:36:21 +0900
+
+navi2ch-cvs (0.0.20020112-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- noname <>  Sat, 12 Jan 2002 20:29:21 +0900
+
+navi2ch-cvs (0.0.20020109-1) unstable; urgency=low
+
+  * Build from CVS HEAD.
+  
+  * Changed to use dh_installinfo.
+
+ -- noname <>  Wed, 9 Jan 2002 11:04:18 +0900
+
+navi2ch-cvs (1.4-2cvs020108) unstable; urgency=low
+
+  * Build from CVS HEAD.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Tue,  8 Jan 2002 20:15:08 +0900
+
+navi2ch (1.4-2) unstable; urgency=low
+
+  * Fixed nomule-xemacs handling finally.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Tue,  8 Jan 2002 18:52:52 +0900
+
+navi2ch (1.4-1) unstable; urgency=low
+
+  * New upstream release
+  
+  * Fixed nomule-xemacs handling again and again.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon,  7 Jan 2002 16:16:03 +0900
+
+navi2ch (0.0.011128-2) unstable; urgency=low
+
+  * Fixed nomule-xemacs handling again.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 13 Dec 2001 11:27:35 +0900
+
+navi2ch (0.0.011128-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed, 28 Nov 2001 12:20:45 +0900
+
+navi2ch (0.0.011027-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sat, 27 Oct 2001 16:16:28 +0900
+
+navi2ch (0.0.011003-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed,  3 Oct 2001 09:14:13 +0900
+
+navi2ch (0.0.010930-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sun, 30 Sep 2001 16:28:25 +0900
+
+navi2ch (0.0.010929-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sat, 29 Sep 2001 01:51:17 +0900
+
+navi2ch (0.0.010919-2) unstable; urgency=low
+
+  * Disabled using read.cgi to avoid emacen core dump.
+  
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 20 Sep 2001 12:40:08 +0900
+
+navi2ch (0.0.010919-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed, 19 Sep 2001 13:32:35 +0900
+
+navi2ch (0.0.010909-2) unstable; urgency=low
+
+  * Adapted to latest BBS status.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 13 Sep 2001 14:39:09 +0900
+
+navi2ch (0.0.010909-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 10 Sep 2001 13:29:25 +0900
+
+navi2ch (0.0.010901-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Tue,  4 Sep 2001 06:17:11 +0900
+
+navi2ch (0.0.010728-2) unstable; urgency=low
+
+  * Added the following patches:
+    http://navi2ch.tripod.co.jp/navi2ch-010728-aa.patch
+    http://navi2ch.tripod.co.jp/navi2ch-010728-index.patch
+    http://navi2ch.tripod.co.jp/navi2ch-010728-index2.patch 
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Fri, 31 Aug 2001 03:06:54 +0900
+
+navi2ch (0.0.010728-1) unstable; urgency=low
+
+  * New upstream release
+
+  * Added the following patch:
+    http://cocoa.2ch.net/test/read.cgi?bbs=unix&key=976032951&st=928&to=928&nofirst=true
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sat, 28 Jul 2001 23:47:10 +0900
+
+navi2ch (0.0.010727-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sat, 28 Jul 2001 10:29:56 +0900
+
+navi2ch (0.0.010701-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Sun,  1 Jul 2001 21:47:35 +0900
+
+navi2ch (0.0.010628-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 28 Jun 2001 09:51:44 +0900
+
+navi2ch (0.0.010611-3) unstable; urgency=low
+
+  * Added the following patch:
+  http://cocoa.2ch.net/test/read.cgi?bbs=unix&key=976032951&st=777&to=777&nofirst=true
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 21 Jun 2001 19:21:33 +0900
+
+navi2ch (0.0.010611-2) unstable; urgency=low
+
+  * Exclude mule2 for byte compile target.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 18 Jun 2001 18:07:05 +0900
+
+navi2ch (0.0.010611-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 11 Jun 2001 16:12:04 +0900
+
+navi2ch (0.0.010531-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Fri,  1 Jun 2001 10:34:07 +0900
+
+navi2ch (0.0.010508-2) unstable; urgency=low
+
+  * Added emacs21 patch.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 28 May 2001 09:55:15 +0900
+
+navi2ch (0.0.010508-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed,  9 May 2001 11:02:22 +0900
+
+navi2ch (0.0.010504-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon,  7 May 2001 11:53:17 +0900
+
+navi2ch (0.0.010501-2) unstable; urgency=low
+
+  * Applied the following patch:
+  http://cocoa.2ch.net/test/read.cgi?bbs=unix&key=976032951&st=577&to=577&nofirst=true
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed,  2 May 2001 10:53:35 +0900
+
+navi2ch (0.0.010501-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Tue,  1 May 2001 10:22:38 +0900
+
+navi2ch (0.0.010418-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Thu, 19 Apr 2001 18:07:51 +0900
+
+navi2ch (0.0.010328-1) unstable; urgency=low
+
+  * New upstream.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Wed, 28 Mar 2001 17:29:10 +0900
+
+navi2ch (0.0.010318-2) unstable; urgency=low
+
+  * Fixed a bug.
+  * Added autoload on startup elisp.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 19 Mar 2001 18:30:55 +0900
+
+navi2ch (0.0.010318-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- NOKUBI Takatsugu <knok@daionet.gr.jp>  Mon, 19 Mar 2001 09:58:45 +0900
+
+

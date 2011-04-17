@@ -1,0 +1,15 @@
+Source: navi2ch-cvs
+Section: web
+Priority: optional
+Maintainer: NOKUBI Takatsugu <knok@daionet.gr.jp>
+Standards-Version: 3.1.1
+
+Package: navi2ch-cvs
+Architecture: all
+Depends: emacsen | emacs20 | xemacs21
+Suggests: mule-ucs (>= 0.84)
+Provides: navi2ch
+Conflicts: navi2ch
+Replaces: navi2ch
+Description: Navigator for 2ch.
+ This package is navi2ch, a browser software for 2ch (Web BBS).

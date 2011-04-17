@@ -1,0 +1,45 @@
+;; -*-emacs-lisp-*-
+;;
+;; Emacs startup file for the Debian GNU/Linux navi2ch package
+;;
+;; Originally contributed by Nils Naumann <naumann@unileoben.ac.at>
+;; Modified by Dirk Eddelbuettel <edd@debian.org>
+;; Adapted for dh-make by Jim Van Zandt <jrv@vanzandt.mv.com>
+
+;; The navi2ch package follows the Debian/GNU Linux 'emacsen' policy and
+;; byte-compiles its elisp files for each 'emacs flavor' (emacs19,
+;; xemacs19, emacs20, xemacs20...).  The compiled code is then
+;; installed in a subdirectory of the respective site-lisp directory.
+;; We have to add this to the load-path:
+;(setq load-path (nconc load-path (list (concat "/usr/share/"
+;                                               (symbol-name flavor)
+;                                               "/site-lisp/navi2ch"))))
+
+(let ((path (concat "/usr/share/" (symbol-name flavor) "/site-lisp/navi2ch")))
+  (if (fboundp 'debian-pkg-add-load-path-item)
+      (debian-pkg-add-load-path-item path)
+    (setq load-path (cons path load-path))))
+
+(setq navi2ch-icon-directory "/usr/share/pixmaps/navi2ch")
+
+(autoload 'navi2ch "navi2ch" "Interface for 2ch.net on Emacs." t)
+
+;; for izonmoji-mode.el
+(if (string-match "XEmacs" emacs-version)
+    (progn (make-charset
+      'japanese-jisx0213-1
+      "JIS X 0213:2000 Plain 1"
+      '(registry "jisx0213\\(\\.2000\\)-1"
+		 dimension 2 chars 94 final ?O graphic 0))
+     (make-charset
+      'japanese-jisx0213-2
+      "JIS X 0213:2000 Plain 2"
+      '(registry "jisx0213\\(\\.2000\\)-2"
+		 dimension 2 chars 94 final ?P graphic 0))))
+(if (string-match "20." emacs-version)
+    (require 'jisx0213))
+
+;; for latest bbsmenu (2001/09/13)
+;(setq navi2ch-list-bbstable-url "http://www.2ch.net/bbsmenu.html")
+;; to avoid emacsen core dump (2001/09/20)
+;(setq navi2ch-article-use-readcgi-hosts nil)

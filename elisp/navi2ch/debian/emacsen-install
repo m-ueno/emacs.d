@@ -1,0 +1,78 @@
+#! /bin/sh -e
+# /usr/lib/emacsen-common/packages/install/navi2ch
+
+set -e
+
+FLAVOR=$1
+PACKAGE=navi2ch
+
+if [ ${FLAVOR} = emacs -o ${FLAVOR} = mule2 ]; then exit 0; fi
+
+if [ ${FLAVOR} = xemacs21 ];then
+        XEMACS=`ls /usr/bin/xemacs*21*-mule* 2> /dev/null | head -1`
+        if [ -z $XEMACS ];then exit 0; fi
+        XEMACS=`basename $XEMACS`
+fi
+
+echo install/${PACKAGE}: Handling install for emacsen flavor ${FLAVOR}
+
+FLAVORTEST=`echo $FLAVOR | cut -c-6`
+if [ ${FLAVORTEST} = xemacs ] ; then
+    SITEFLAG="-no-site-file"
+else
+    SITEFLAG="--no-site-file"
+fi
+FLAGS="${SITEFLAG} -q -batch -l path.el -f batch-byte-compile"
+
+ELDIR=/usr/share/emacs/site-lisp/${PACKAGE}
+ELCDIR=/usr/share/${FLAVOR}/site-lisp/${PACKAGE}
+
+# Install-info-altdir does not actually exist. 
+# Maybe somebody will write it.
+if test -x /usr/sbin/install-info-altdir; then
+    echo install/${PACKAGE}: install Info links for ${FLAVOR}
+    install-info-altdir --quiet --section "" "" --dirname=${FLAVOR} /usr/info/${PACKAGE}.info.gz
+fi
+
+install -m 755 -d ${ELCDIR}
+cd ${ELDIR}
+FILES=`echo *.el`
+FILES2=`ls *.el | fgrep -v izonmoji-mode.el`
+#FILES="navi2ch-util.el navi2ch-article.el navi2ch-board-misc.el navi2ch-list.el navi2ch-board.el navi2ch-bookmark.el navi2ch-search.el navi2ch-popup-article.el navi2ch-articles.el navi2ch-history.el navi2ch-search.el navi2ch-face.el navi2ch-head.el navi2ch-message.el navi2ch-mona.el navi2ch-net.el navi2ch-vars.el navi2ch-version.el navi2ch-e21.el navi2ch.el"
+cp ${FILES} ${ELCDIR}
+cd ${ELCDIR}
+
+cat << EOF > path.el
+(setq max-specpdl-size 1200)
+(setq load-path (cons "." load-path) byte-compile-warnings nil)
+;; for izonmoji-mode.el
+(if (string-match "XEmacs" emacs-version)
+    (progn (make-charset
+      'japanese-jisx0213-1
+      "JIS X 0213:2000 Plain 1"
+      '(registry "jisx0213\\(\\.2000\\)-1"
+		 dimension 2 chars 94 final ?O graphic 0))
+     (make-charset
+      'japanese-jisx0213-2
+      "JIS X 0213:2000 Plain 2"
+      '(registry "jisx0213\\(\\.2000\\)-2"
+		 dimension 2 chars 94 final ?P graphic 0))))
+EOF
+if [ -z $XEMACS ];then
+    if [ "$FLAVOR" = emacs20 ]; then
+        if  [ -d /usr/share/emacs/site-lisp/mule-ucs ]; then
+	    echo '(load-library "jisx0213.el")' >>path.el
+	    ${FLAVOR} ${FLAGS} ${FILES} ${FILES} > /dev/null 2>&1
+	else
+	    ${FLAVOR} ${FLAGS} ${FILES2} ${FILES2} > /dev/null 2>&1
+	fi
+    else 
+	${FLAVOR} ${FLAGS} ${FILES} ${FILES} > /dev/null 2>&1
+    fi
+else
+    ${XEMACS} ${FLAGS} ${FILES} ${FILES} > /dev/null 2>&1
+fi
+
+rm -f *.el path.el
+
+exit 0
