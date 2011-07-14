@@ -20,6 +20,7 @@
 ;         (yahtml-mode . "test.html")
          ;; ファイル名で指定
          ("\\.c$" . "template.c")
+         ("\\.pl$" . "template.pl")
          ("\\.tex$" . "template.tex")
          )
        auto-insert-alist))
