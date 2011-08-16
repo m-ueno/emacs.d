@@ -21,6 +21,7 @@
 ))
 
 (global-set-key (kbd "C-;") 'anything)
+;(global-set-key (kbd "M-x") 'anything-M-x)
 ;(define-key global-map (kbd "C-;") 'anything)
 
 ;; http://d.hatena.ne.jp/rubikitch/searchdiary?word=%2a%5bone%2dkey%5d

@@ -1,6 +1,22 @@
 ;; utility-functions.el
-;; $Last update: 2010/09/12 13:00:56 $
+;; $Last update: 2011/08/14 17:40:51 $
 ;; í∑ÇﬂÇÃä÷êîåQ
+
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+    (filename (buffer-file-name)))
+    (if (not filename)
+    (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+      (message "A buffer named '%s' already exists!" new-name)
+    (progn
+      (rename-file name new-name 1)
+      (rename-buffer new-name)
+      (set-visited-file-name new-name)
+      (set-buffer-modified-p nil))))))
 
 (defun doya-show ()
   (interactive)
@@ -62,7 +78,7 @@
     (find-file (pop my-killed-file-name-list))))
 (add-hook 'kill-buffer-hook 'my-push-killed-file-name-list)
 (global-set-key "\C-xk" (lambda() (interactive)(kill-buffer (buffer-name))))
-(global-set-key "\C-x/" 'my-pop-killed-file-name-list)
+(global-set-key "\C-x\/" 'my-pop-killed-file-name-list)
 
 
 ;; recursive byte-compile
@@ -107,7 +123,7 @@
 
 ;; for cl-memo
 (fset 'memo
-   [?\M-< S-f5 ?\C-j ?  ?  ?  ?  ?* ?  ?\C-o ?\C-o])
+   [?\M-< S-f5 ?\C-j ?\C-q ?\C-i?* ?  ?\C-o ?\C-o])
 (defvar my-save-buffer-hook nil)
 (defun save-buffer-wrapper ()
   (interactive)

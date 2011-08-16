@@ -1,5 +1,4 @@
 ;;; Yasnippet.el --- Yet another snippet extension for Emacs.
-
 ;; Copyright 2008 pluskid
 ;;           2009 pluskid, joaotavora
 

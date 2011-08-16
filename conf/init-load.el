@@ -1,9 +1,14 @@
 ;; *** init-load.el ***
-;; $Last update: 2011/01/28  0:02:10 $
+;; $Last update: 2011/08/15  2:41:09 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
 ;; ----------------------------------------------------------------
+
+;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
+(require 'jaunte)
+(global-set-key (kbd "C-c C-j") 'jaunte)
+
 ;; 13-2
 (require 'summarye)
 ;; 12-6

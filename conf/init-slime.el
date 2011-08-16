@@ -11,8 +11,6 @@
 	      lisp-font-lock-keywords-2))
 
 ;; SLIME
-(add-to-list 'load-path "~/.emacs.d/elisp/slime/")
-(add-to-list 'load-path "~/.emacs.d/elisp/slime/contrib/")
 ;(setq inferior-lisp-program "sbcl")
 ;(setq inferior-lisp-program "clisp -K full")
 (setq inferior-lisp-program "clisp -K base")

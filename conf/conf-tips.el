@@ -1,5 +1,17 @@
 ;;; conf-tips.el --- default function (short configure)
+;; id:rubikitch
+;; http://d.hatena.ne.jp/rubikitch/20100210/emacs
+(defun other-window-or-split ()
+  (interactive)
+  (when (one-window-p)
+    (split-window-horizontally))
+  (other-window 1))
 
+(global-set-key (kbd "C-t") 'other-window-or-split)
+
+;; リージョン選択の解除（デフォルトでM-ESC ESC | ESC ESC ESC）
+;; http://dev.ariel-networks.com/articles/emacs/part4/
+(global-set-key (kbd "C-M-g") 'keyboard-escape-quit)
 
 ;; http://d.hatena.ne.jp/khiker/20100114
 ;; 左フリンジの上下にマークをつける
@@ -138,7 +150,7 @@
 ;;           '(lambda ()
 ;; 	     (local-set-key "\C-c>" 'indent-region)))
 ;; とする
-;; function: global-unset-key もある
+;; #'global-unset-key もある
 
 ;; comment-region
 ;; C-c ; / C-c :
@@ -147,7 +159,6 @@
 
 (global-set-key "\C-h" 'backward-delete-char)  
 (global-set-key "\C-z" 'scroll-down)
-(global-set-key "\C-t" 'other-window)
 (global-set-key "\C-x\C-x" 'smart-run)
 
 ;; clipboard
