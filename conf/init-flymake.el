@@ -48,6 +48,15 @@
           '(lambda ()
 	     (flymake-mode t)))
 
+;;; flymake JS
+;; 断念；；
+;; (require 'flymake-jshint)
+;; (add-hook 'javascript-mode-hook
+;;      (lambda () (flymake-mode t)))
+
+;http://d.hatena.ne.jp/kazu-yamamoto/20071029/1193651325
+;(require 'flymake-jsl)
+
 ;;; flymake Perl
 ;; http://d.hatena.ne.jp/antipop/20080701/1214838633
 (require 'set-perl5lib)

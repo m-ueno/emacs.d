@@ -14,13 +14,13 @@
 ;;; emacs-xdviÏ¢·È
 (if (load "xdvi-search" t) ; É¬¿Ü
     (server-start) ; É¬¿Ü
-    (progn
-      (custom-set-variables
-       '(server-switch-hook (quote (raise-frame)))) ; Áë¤ò¾å¤Ë
-      (custom-set-faces)
-      (add-hook 'yatex-mode-hook
-                '(lambda ()
-                   (define-key YaTeX-mode-map "\C-c\C-j" 'xdvi-jump-to-line)))))
+  (progn
+    (custom-set-variables
+     '(server-switch-hook (quote (raise-frame)))) ; Áë¤ò¾å¤Ë
+    (custom-set-faces)
+    (add-hook 'yatex-mode-hook
+	      '(lambda ()
+		 (define-key YaTeX-mode-map "\C-c\C-j" 'xdvi-jump-to-line)))))
 
 (add-hook 'LaTeX-mode-hook
           '(lambda ()

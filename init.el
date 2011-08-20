@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/07/27  8:55:28 $
+;; $Last update: 2011/08/20 15:12:07 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -14,11 +14,13 @@
  "~/.emacs.d/conf"
  "~/.emacs.d/elisp"
  "~/.emacs.d/elisp/goby"
+  "~/.emacs.d/elisp/jshint-mode"
  "~/.emacs.d/elisp/navi2ch"
  "~/.emacs.d/elisp/slime"
  "~/.emacs.d/elisp/slime/contrib"
  "/usr/share/emacs/site-lisp/"
  )
+
 
 ;; eval-safe
 ;; http://www.sodan.org/~knagano/emacs/dotemacs.html#eval-safe
@@ -43,6 +45,7 @@
 (load "init-goby")
 (load "init-lang")
 (load "init-load")
+(load "init-magit")
 (load "init-mozc")
 (load "init-myopera")
 (load "init-outline")

@@ -1,9 +1,8 @@
 ;;; init-lang.el
 ;;; for editing programming languages
 
-;; JavaScript
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;; bat
+(require 'batch-mode)
 
 ;; C
 ;; http://oku.edu.mie-u.ac.jp/~okumura/c/style.html
@@ -21,14 +20,35 @@
 (setq auto-mode-alist
    (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
-;; bat
-(require 'batch-mode)
-
 ;; css-mode
 (autoload 'css-mode "css-mode" "Mode for editing CSS files" t)
 (setq auto-mode-alist
       (append '(("\\.css$" . css-mode))
               auto-mode-alist))
+
+;; JavaScript
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;http://d.hatena.ne.jp/gan2/20080625/1214410086
+; tabで位置をビシッと決める。
+(setq js2-bounce-indent-flag nil)
+;インデントしたときにスペースを除いた行頭にポイントが移動するようにした。
+;(define-key js2-mode-map "\C-i" 'indent-and-back-to-indentation)
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (setq js2-bounce-indent-flag nil)
+             (define-key js2-mode-map "\C-m" 'newline-and-indent)
+             (define-key js2-mode-map "\C-i" 'indent-and-back-to-indentation)
+             ))
+(defun indent-and-back-to-indentation ()
+  (interactive)
+  (indent-for-tab-command)
+  (let ((point-of-indentation
+         (save-excursion
+           (back-to-indentation)
+           (point))))
+    (skip-chars-forward "\s " point-of-indentation)))
 
 ;; nxhtml
 ;;(load "~/site-lisp/nxhtml/autostart22.el")
