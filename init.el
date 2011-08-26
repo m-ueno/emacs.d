@@ -32,6 +32,8 @@
 ;; 分岐 : (or #'system-name system-type system-configuration)
 (if (string-equal "gnu/linux" system-type)
     (load "init-linux"))
+(if (string-equal "windows-nt" system-type)
+    (load "init-windows"))
 
 (load "conf-long")
 (load "conf-tips")
@@ -47,7 +49,7 @@
 (load "init-load")
 (load "init-magit")
 (load "init-mozc")
-(load "init-myopera")
+;(load "init-myopera")
 (load "init-outline")
 (load "init-slime")			; init-lispを統合
 (load "init-yas")
