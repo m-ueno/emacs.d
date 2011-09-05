@@ -18,7 +18,7 @@
 (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
 
 ;; mozc-mode 時はカーソルを青にする
-(setq mozc-color "blue")
+(setq mozc-color "goldenrod")
 
 (defun mozc-change-cursor-color ()
   (if mozc-mode
@@ -42,7 +42,7 @@ KEY-LIST is a list of key code(97 = ?a) and/or key symbols('space, 'shift,
     (apply 'mozc-session-execute-command 'SendKey key-list)))
 
 ;; ----------------おれおれ
-(setq mozc-cursor-color "blue")
+(setq mozc-cursor-color "goldenrod")
 ;; (defadvice set-input-method (before)
 ;;   (if current-input-method
 ;;       (set-cursor-color mozc-cursor-color)

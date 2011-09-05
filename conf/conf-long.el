@@ -1,10 +1,33 @@
 ;; longconfig.el
-;; $Last update: 2010/08/15 22:05:35 $
+;; $Last update: 2011/09/05 23:38:47 $
 
 ;; 繰り返し処理の自動繰り返し ― dmacro
 ;(defconst *dmacro-key* "\C-\S-t" "繰返し指定キー")
 ;(global-set-key *dmacro-key* 'dmacro-exec)
 ;(autoload 'dmacro-exec "dmacro" nil t)
+
+;; 2011-09-05
+;; git checkout/merge/pull用
+;; auto-revert-mode, global-auto-revert-modeでもいいが、
+;; こっちはundoが効くので安心
+(defun reopen-file ()
+  (interactive)
+  (let ((file-name (buffer-file-name))
+        (old-supersession-threat
+         (symbol-function 'ask-user-about-supersession-threat))
+        (point (point)))
+    (when file-name
+      (fset 'ask-user-about-supersession-threat (lambda (fn)))
+      (unwind-protect
+          (progn
+            (erase-buffer)
+            (insert-file file-name)
+            (set-visited-file-modtime)
+            (goto-char point))
+        (fset 'ask-user-about-supersession-threat
+              old-supersession-threat)))))
+(global-set-key (kbd "C-x C-r") 'reopen-file)
+
 
 ;; auto-insert
 ;; テンプレートの保存先
@@ -21,6 +44,7 @@
          ;; ファイル名で指定
          ("\\.c$" . "template.c")
          ("\\.pl$" . "template.pl")
+         ("\\.pm$" . "template.pl")
          ("\\.tex$" . "template.tex")
          )
        auto-insert-alist))
@@ -73,10 +97,8 @@
 
 ;; yank 時に次の yank 候補を minibuffer に表示
 (defun my-yank-display ()
-  (unless (or (eq kill-ring-yank-pointer nil)
-	      ;; kill-ringが空だったり
-	      (= (aref (buffer-name) 0) ? ))
-    ;; minibuf で yank しようとしていなければ
+  (unless (or (eq kill-ring-yank-pointer nil) ;; kill-ringが空だったり
+              (= (aref (buffer-name) 0) ? )) ;; minibuf で yank しようとしていなければ
     (if (eq (cdr kill-ring-yank-pointer) nil)
         (message "end of kill-ring")
       (message (car (cdr kill-ring-yank-pointer))))))

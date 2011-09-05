@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/08/20 15:12:07 $
+;; $Last update: 2011/08/20 16:08:40 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -40,7 +40,7 @@
 (load "init-anything")
 (load "init-color")
 (load "init-dired")
-(load "init-font")			;Consolas13
+(load "init-font")          ;Consolas13
 (load "init-flymake")
 (load "init-goby")
 (load "init-lang")
@@ -49,9 +49,9 @@
 (load "init-mozc")
 (load "init-myopera")
 (load "init-outline")
-(load "init-slime")			; init-lispを統合
+(load "init-slime")             ; init-lispを統合
 (load "init-yas")
-(load "init-yatex")			; init-auctex/init-yatexを分離
+(load "init-yatex")             ; init-auctex/init-yatexを分離
 
 ;; for auto-install
 ;(setq url-proxy-services '(("http" . "proxy.kuins.net:8080")))
@@ -63,4 +63,3 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
-
