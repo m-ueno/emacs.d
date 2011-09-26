@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/08/20 16:08:40 $
+;; $Last update: 2011/09/06 23:36:40 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -13,8 +13,9 @@
 (add-to-load-path
  "~/.emacs.d/conf"
  "~/.emacs.d/elisp"
+ "~/.emacs.d/elisp/3dmaze"
  "~/.emacs.d/elisp/goby"
-  "~/.emacs.d/elisp/jshint-mode"
+ "~/.emacs.d/elisp/jshint-mode"
  "~/.emacs.d/elisp/navi2ch"
  "~/.emacs.d/elisp/slime"
  "~/.emacs.d/elisp/slime/contrib"
@@ -39,6 +40,7 @@
 (load "conf-tips")
 (load "utility-functions")
 
+(load "init-3dmaze")
 (load "init-anything")
 (load "init-color")
 (load "init-dired")
