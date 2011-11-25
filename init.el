@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/09/06 23:36:40 $
+;; $Last update: 2011/11/25  9:10:06 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -54,6 +54,7 @@
 ;(load "init-myopera")
 (load "init-outline")
 (load "init-slime")             ; init-lispを統合
+(load "init-smartchr")
 (load "init-yas")
 (load "init-yatex")             ; init-auctex/init-yatexを分離
 

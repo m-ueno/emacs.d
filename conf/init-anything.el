@@ -5,20 +5,20 @@
 (require 'anything-config)
 (setq anything-sources
       '(anything-c-source-buffers
-	anything-c-source-recentf
-	anything-c-source-file-name-history
-	anything-c-source-files-in-current-dir
-;	anything-c-source-bookmarks
-;	anything-c-source-buffer-not-found
-;       anything-c-source-locate
-;	anything-c-source-calculation-result
-;	anything-c-source-info-pages
-;	anything-c-source-info-elisp
-;	anything-c-source-man-pages
-;	anything-c-source-emacs-commands
-;	anything-c-source-auto-install-from-emacswiki ;anything-auto-install
-;	anything-c-source-auto-install-from-library
-))
+        anything-c-source-recentf
+        anything-c-source-file-name-history
+        anything-c-source-files-in-current-dir
+                                            ;; anything-c-source-bookmarks
+                                            ;; anything-c-source-buffer-not-found
+                                            ;;   anything-c-source-locate
+                                            ;; anything-c-source-calculation-result
+                                            ;; anything-c-source-info-pages
+                                            ;; anything-c-source-info-elisp
+                                            ;; anything-c-source-man-pages
+                                            ;; anything-c-source-emacs-commands
+                                            ;; anything-c-source-auto-install-from-emacswiki ;anything-auto-install
+                                            ;; anything-c-source-auto-install-from-library
+        ))
 
 ;http://d.hatena.ne.jp/mooz/20110320/p1
 (require 'cl)  ; loop, delete-duplicates

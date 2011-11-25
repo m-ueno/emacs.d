@@ -1,5 +1,5 @@
 ;; *** init-load.el ***
-;; $Last update: 2011/08/15  2:41:09 $
+;; $Last update: 2011/11/22 20:18:41 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
@@ -22,7 +22,7 @@
 ;; 6-2
 (require 'redo+)
 (global-set-key (kbd "C-M-/") 'redo)
-(setq undo-no-redo t)		   ;過去のundoがredoされないようにする
+(setq undo-no-redo t)          ;過去のundoがredoされないようにする
 ;; 大量のundoに耐える
 (setq undo-limit 600000)
 (setq undo-strong-limit 900000)
@@ -38,14 +38,14 @@
 ;; (add-hook 'find-file-hooks 'bm-buffer-restore)
 ;; (add-hook 'kill-buffer-hook 'bm-buffer-save)
 ;; (add-hook 'kill-emacs-hook '(lambda nil (bm-buffer-save-all)
-;; 			      (bm-repository-save)))
+;;                    (bm-repository-save)))
 ;; (add-hook 'after-save-hook 'bm-buffer-save)
 ;; (add-hook 'after-revert-hook 'bm-buffer-restore)
 ;; (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
 ;; (global-set-key (kbd "M-SPC" 'bm-toggle))
 ;; (global-set-key (kbd "M-[" 'bm-previous))
 ;; (global-set-key (kbd "M-]" 'bm-next))
-		
+
 ;; 5-6
 (require 'point-undo)
 (define-key global-map [f7] 'point-undo)
@@ -101,16 +101,8 @@
 
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt
-			     yas/ido-prompt
-			     yas/completing-prompt))
-
-;; ;; smartchr.el (= の両脇にスペース)
-;; (require 'smartchr)
-;; (global-set-key (kbd "=") (smartchr '(" = " "=" " == " " === ")))
-;; ;; { で閉じ括弧を補完(Cのcompletetion と競合)
-;; ; substitute `!!' with cursor
-;; ;(global-set-key (kbd "{")
-;; ;		(smartchr '("{ `!!' }" "{ \"`!!'\" }" "{")))
+                             yas/ido-prompt
+                             yas/completing-prompt))
 
 ;; ;; C-x ) でマクロ
 ;; (add-hook 'tinymacro-:load-hook 'tinymacro-install-default-keybindings)
