@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/11/25  9:10:06 $
+;; $Last update: 2011/12/14 19:21:17 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -30,11 +30,19 @@
        (progn ,@body)
      (error (message "[eval-safe] %s" err))))
 
+;; defkey -- merge 'kbd' macro
+(defmacro defkey (keymap key command)
+  `(define-key ,keymap ,(read-kbd-macro key) ,command))
+(defmacro gdefkey (key command)
+  `(defkey global-map ,key ,command))
+
 ;; 分岐 : (or #'system-name system-type system-configuration)
 (if (string-equal "gnu/linux" system-type)
     (load "init-linux"))
 (if (string-equal "windows-nt" system-type)
     (load "init-windows"))
+
+(eval-safe 
 
 (load "conf-long")
 (load "conf-tips")
@@ -58,6 +66,7 @@
 (load "init-yas")
 (load "init-yatex")             ; init-auctex/init-yatexを分離
 
+)
 ;; for auto-install
 ;(setq url-proxy-services '(("http" . "proxy.kuins.net:8080")))
 ;(setq url-proxy-services nil)

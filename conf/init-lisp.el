@@ -1,12 +1,11 @@
-;; ¬Š‡ŒÊ () ‚ÌF‚ğ”–‚­‚·‚é
+;; å°æ‹¬å¼§ () ã®è‰²ã‚’è–„ãã™ã‚‹
 ;; http://0xcc.net/unimag/10/
 (defvar paren-face 'paren-face)
 (make-face 'paren-face)
 (set-face-foreground 'paren-face "skyblue4")
-(setq lisp-font-lock-keywords-2	;; lisp-mode ‚ÌFİ’è‚É’Ç‰Á
+(setq lisp-font-lock-keywords-2     ;; lisp-mode ã®è‰²è¨­å®šã«è¿½åŠ 
       (append '(("(\\|)" . paren-face))
-	      lisp-font-lock-keywords-2))
-
+          lisp-font-lock-keywords-2))
 
 ;; SLIME
 (setq inferior-lisp-program "clisp -K full")
@@ -36,9 +35,9 @@
 (setq slime-net-coding-system 'utf-8-unix)
 
 (add-hook 'lisp-mode-hook (lambda ()
-			    (define-key global-map (kbd "C-c h") 'hyperspec-lookup)
-			    (slime-mode t) ;minor-mode
-			    (show-paren-mode 1)))
+                (define-key global-map (kbd "C-c h") 'hyperspec-lookup)
+                (slime-mode t) ;minor-mode
+                (show-paren-mode 1)))
 
 (require 'hyperspec)
 (setq common-lisp-hyperspec-root
@@ -53,6 +52,14 @@
       (split-window-vertically))
   (slime command coding-system))
 
-;; C-c L‚Åslime‹N“®
+;; C-c Lã§slimeèµ·å‹•
 (define-key global-map (kbd "C-c L") 'my-slime)
-;; slime I‚í‚è----------------
+;; slime çµ‚ã‚ã‚Š----------------
+
+
+;; paredit.el -- Emacs LISP TB
+(define-key paredit-mode-map (kbd ")")
+  'paredit-close-round-and-newline)
+(define-key paredit-mode-map (kbd "M-)")
+  'paredit-close-round)
+

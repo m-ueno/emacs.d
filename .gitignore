@@ -3,3 +3,4 @@ autosave*
 ac-comphist.dat
 anything-c-adaptive-history
 tramp
+*.elc
