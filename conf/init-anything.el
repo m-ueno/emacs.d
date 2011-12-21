@@ -21,7 +21,6 @@
         ))
 
 ;http://d.hatena.ne.jp/mooz/20110320/p1
-(require 'cl)  ; loop, delete-duplicates
 (defun anything-font-families ()
   "Preconfigured `anything' for font family."
   (interactive)

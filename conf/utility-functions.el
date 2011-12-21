@@ -1,5 +1,4 @@
 ;; utility-functions.el
-;; $Last update: 2011/08/23 10:18:36 $
 ;; ’·‚ß‚ÌŠÖ”ŒQ
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
@@ -150,7 +149,7 @@
 (defun my-get-date () (interactive) (my-get-date-gen "%Y-%m-%d"))
 (defun my-get-time () (interactive) (my-get-date-gen "%H:%M"))
 (defun my-get-dtime () (interactive) (my-get-date-gen "%Y-%m-%d %H:%M"))
-(global-set-key [f5] 'my-get-date)
+;(global-set-key [f5] 'my-get-date) ;; anything ‚Æ‹£‡
 (global-set-key [S-f5] 'my-get-dtime)
 
 ;; *scratch*‚ğÁ‚³‚È‚¢

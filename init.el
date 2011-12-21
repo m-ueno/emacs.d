@@ -1,5 +1,5 @@
 ;; .emacs
-;; $Last update: 2011/12/14 19:21:17 $
+;; $Last update: 2011/12/22  0:25:21 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -22,7 +22,6 @@
  "/usr/share/emacs/site-lisp/"
  )
 
-
 ;; eval-safe
 ;; http://www.sodan.org/~knagano/emacs/dotemacs.html#eval-safe
 (defmacro eval-safe (&rest body)
@@ -31,24 +30,24 @@
      (error (message "[eval-safe] %s" err))))
 
 ;; defkey -- merge 'kbd' macro
+;; Emacs LISP Technique Bible
 (defmacro defkey (keymap key command)
   `(define-key ,keymap ,(read-kbd-macro key) ,command))
 (defmacro gdefkey (key command)
   `(defkey global-map ,key ,command))
 
-;; 分岐 : (or #'system-name system-type system-configuration)
 (if (string-equal "gnu/linux" system-type)
     (load "init-linux"))
 (if (string-equal "windows-nt" system-type)
     (load "init-windows"))
-
-(eval-safe 
+(if (string-equal "UENO-WIN7" (getenv "COMPUTERNAME")) ; equal to 'system-name
+    (load "init-lab"))
 
 (load "conf-long")
 (load "conf-tips")
 (load "utility-functions")
 
-(load "init-3dmaze")
+;(load "init-3dmaze")
 (load "init-anything")
 (load "init-color")
 (load "init-dired")
@@ -66,7 +65,6 @@
 (load "init-yas")
 (load "init-yatex")             ; init-auctex/init-yatexを分離
 
-)
 ;; for auto-install
 ;(setq url-proxy-services '(("http" . "proxy.kuins.net:8080")))
 ;(setq url-proxy-services nil)
