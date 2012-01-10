@@ -240,15 +240,10 @@
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
 (custom-set-variables '(current-language-environment "Japanese"))
-                                        ;(require 'ruby-electric)
-;; inf-ruby -- inferior ruby
-(autoload 'ruby-mode "ruby-mode"
-  "Mode for editing ruby source files" t)
-(setq auto-mode-alist
-      (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
-(setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
-                                     interpreter-mode-alist))
+(setq ruby-deep-indent-paren-style nil) ; http://www.hinet.mydns.jp/tdiary/20060923.html
 
+;; (require 'ruby-electric)
+;; inf-ruby -- inferior ruby
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby"

@@ -1,6 +1,15 @@
 ;; utility-functions.el
-;; $Last update: 2011/08/23 10:18:36 $
+;; $Last update: 2011/12/24  2:47:04 $
 ;; ’·‚ß‚ÌŠÖ”ŒQ
+
+;; defkey -- merge 'kbd' macro
+;; Emacs LISP TB
+;; Šo‚¦•û: ˆø”‚Í "" ‚Æ 'command
+(defmacro defkey (keymap key command)
+  `(define-key ,keymap ,(read-kbd-macro key) ,command))
+(defmacro gdefkey (key command)
+  `(define-key global-map ,(read-kbd-macro key) ,command))
+
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
@@ -150,8 +159,8 @@
 (defun my-get-date () (interactive) (my-get-date-gen "%Y-%m-%d"))
 (defun my-get-time () (interactive) (my-get-date-gen "%H:%M"))
 (defun my-get-dtime () (interactive) (my-get-date-gen "%Y-%m-%d %H:%M"))
-(global-set-key [f5] 'my-get-date)
-(global-set-key [S-f5] 'my-get-dtime)
+;;(global-set-key [f5] 'my-get-date)
+(gdefkey "S-<f5>" 'my-get-dtime)
 
 ;; *scratch*‚ğÁ‚³‚È‚¢
 (defun my-make-scratch (&optional arg)

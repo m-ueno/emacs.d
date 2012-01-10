@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 ;;; init-yas.el ---
 
 ;(add-to-list 'load-path "./.emacs.d/elisp/yasnippet/yasnippet.el")
 (require 'yasnippet)
-(setq yas/root-directory "~/.emacs.d/snippets")
-(yas/load-directory yas/root-directory)
 (require 'yasnippet-config)
+(setq yas/root-directory "~/.emacs.d/snippets")
 ;(yas/setup)
 
 ;; id:antipop
@@ -30,12 +30,12 @@
 ;; ver 0.4.0からそれを利用して、コメント・リテラルの中では、スニペット
 ;; で特に指定されない限り、展開を行わない。
 
-(setq yas/buffer-local-condition
-      '(or (not (or (string= "font-lock-comment-face"
-                             (get-char-property (point) 'face))
-                    (string= "font-lock-string-face"
-                             (get-char-property (point) 'face))))
-           '(require-snippet-condition . force-in-comment)))
+;; (setq yas/buffer-local-condition
+;;       '(or (not (or (string= "font-lock-comment-face"
+;;                              (get-char-property (point) 'face))
+;;                     (string= "font-lock-string-face"
+;;                              (get-char-property (point) 'face))))
+;;            '(require-snippet-condition . force-in-comment)))
 
 ;;; [2008-03-15]
 ;;; 複数のディレクトリからスニペットを読み込む。

@@ -58,7 +58,7 @@
 ;;  http://petdance.com/ack/
 
 
-   
+;; 
 ;;; History:
 
 ;; $Log: anything-grep.el,v $
