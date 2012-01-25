@@ -30,12 +30,12 @@
 ;; C-UP/C-DOWN でペインをリサイズ
 ;; http://d.hatena.ne.jp/khiker/20100118
 (global-set-key [(ctrl up)] '(lambda (arg) (interactive "p")
-			       (shrink-window arg)))
+                               (shrink-window arg)))
 (global-set-key [(ctrl down)] '(lambda (arg) (interactive "p")
-			       (shrink-window (- arg))))
+                                 (shrink-window (- arg))))
 
 (display-time)
-(global-hl-line-mode)
+(global-hl-line-mode t)
 (set-face-background 'hl-line "dark slate gray")
 
 ;(ffap-bindings)
@@ -44,12 +44,12 @@
 (recentf-mode)
 (setq recentf-max-menu-items 10)
 (setq recentf-max-saved-items 100)
-;; Trumpのリモートファイルを除く
+;; Trampのリモートファイルを除く
 ;; http://homepage.mac.com/zenitani/elisp-j.html
 (setq recentf-exclude '("^/[^/:]+:"))
 
 ;; Emacs23には最初から入っている
-(global-linum-mode)
+(global-linum-mode t)
 
 ;; show-paren-mode
 (show-paren-mode t)
@@ -100,9 +100,9 @@
 (cd (expand-file-name "~"))
 
 ;; 起動時の画面はいらない
-(setq inhibit-startup-message t)
-(setq startup-echo-area-message "")
-(setq initial-scratch-message "")
+(setq inhibit-startup-message t
+      startup-echo-area-message ""
+      initial-scratch-message "")
 
 ;; y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -152,10 +152,7 @@
 ;; とする
 ;; #'global-unset-key もある
 
-;; comment-region
-;; C-c ; / C-c :
-(define-key global-map "\C-c;" 'comment-region)
-(define-key global-map "\C-c:" 'uncomment-region)
+;; defkey / gdefkey マクロを追加した(Emacs Lisp TB)
 
 (global-set-key "\C-h" 'backward-delete-char)  
 (global-set-key "\C-z" 'scroll-down)

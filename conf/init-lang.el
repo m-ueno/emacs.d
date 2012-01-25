@@ -33,6 +33,11 @@
       (append '(("\\.css$" . css-mode))
               auto-mode-alist))
 
+;; Fortran 90
+(add-hook 'f90-mode-hook
+          '(lambda ()
+             (define-key f90-mode-map "¥C-m" 'newline-and-indent)))
+
 ;; JavaScript
 
 ;; comment-out 2011-08-23 23:36
@@ -148,6 +153,9 @@
 
 (add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
+
+;; Lua
+(require 'lua-mode)
 
 
 ;; nxhtml

@@ -1,3 +1,0 @@
-(require '3dmaze)
-
-

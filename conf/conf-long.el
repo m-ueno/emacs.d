@@ -1,5 +1,4 @@
 ;; longconfig.el
-;; $Last update: 2011/09/05 23:38:47 $
 
 ;; 繰り返し処理の自動繰り返し ― dmacro
 ;(defconst *dmacro-key* "\C-\S-t" "繰返し指定キー")
@@ -45,6 +44,7 @@
          ("\\.c$" . "template.c")
          ("\\.pl$" . "template.pl")
          ("\\.pm$" . "template.pl")
+         ("\\.rb$" . "template.rb")
          ("\\.tex$" . "template.tex")
          )
        auto-insert-alist))
