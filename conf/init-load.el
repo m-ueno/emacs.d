@@ -1,9 +1,10 @@
 ;; *** init-load.el ***
-;; $Last update: 2011/11/22 20:18:41 $
+;; $Last update: 2012/01/24 19:53:28 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
 ;; ----------------------------------------------------------------
+(require '3dmaze)
 
 ;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
 (require 'jaunte)
@@ -16,9 +17,6 @@
 (setq usage-memo-base-directory "~/.emacs.d/umemo")
 (umemo-initialize)
 
-;; 6-14
-(require 'auto-complete-config)
-(global-auto-complete-mode 1)
 ;; 6-2
 (require 'redo+)
 (global-set-key (kbd "C-M-/") 'redo)
@@ -51,11 +49,25 @@
 (define-key global-map [f7] 'point-undo)
 (define-key global-map [S-f7] 'point-redo)
 
-
 ;; 4-8 ファイルを自動保存する
 (require 'auto-save-buffers)
-(run-with-idle-timer 0.5 t 'auto-save-buffers)
+(setq auto-save-buffers-timer nil)
+(defun start-auto-save-buffers (&optional delay)
+  (interactive)
+  (let ((delay (or delay 0.5)))
+    (setq auto-save-buffers-timer
+          (run-with-idle-timer delay t 'auto-save-buffers))))
+(defun toggle-auto-save-buffers (&optional delay)
+  (interactive)
+  (let ((delay (or delay 0.5)))
+    (if (not auto-save-buffers-timer)
+        (start-auto-save-buffers delay)
+      (progn (cancel-timer auto-save-buffers-timer)
+             (setq auto-save-buffers-timer nil))))
+  (print auto-save-buffers-timer))
 
+(toggle-auto-save-buffers)
+  
 ;; 4-2 ファイル名がかぶった場合にバッファ名をわかりやすくする
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -91,13 +103,6 @@
 (require 'mcomplete)
 (load "mcomplete-history")
 (turn-on-mcomplete-mode)
-
-(require 'lua-mode)
-
-;; yasnippet
-(require 'yasnippet)
-(setq yas/root-directory "~/.emacs.d/snippets")
-(yas/load-directory yas/root-directory)
 
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt

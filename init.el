@@ -1,5 +1,4 @@
 ;; .emacs
-;; $Last update: 2011/12/24  2:46:06 $
 ;; ・基本init-global.el
 ;; ・elispは utility-functions.el へ
 
@@ -41,7 +40,7 @@
 (load "conf-tips")
 (load "utility-functions")
 
-(load "init-3dmaze")
+(load "init-ac")
 (load "init-anything")
 (load "init-color")
 (load "init-dired")
@@ -69,3 +68,5 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+
+
