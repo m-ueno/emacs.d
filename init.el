@@ -21,7 +21,6 @@
  "/usr/share/emacs/site-lisp/"
  )
 
-
 ;; eval-safe
 ;; http://www.sodan.org/~knagano/emacs/dotemacs.html#eval-safe
 (defmacro eval-safe (&rest body)
@@ -29,18 +28,26 @@
        (progn ,@body)
      (error (message "[eval-safe] %s" err))))
 
+;; defkey -- merge 'kbd' macro
+;; Emacs LISP Technique Bible
+(defmacro defkey (keymap key command)
+  `(define-key ,keymap ,(read-kbd-macro key) ,command))
+(defmacro gdefkey (key command)
+  `(defkey global-map ,key ,command))
 
-;; 分岐 : (or #'system-name system-type system-configuration)
 (if (string-equal "gnu/linux" system-type)
     (load "init-linux"))
 (if (string-equal "windows-nt" system-type)
     (load "init-windows"))
+(if (string-equal "UENO-WIN7" (getenv "COMPUTERNAME")) ; equal to 'system-name
+    (load "init-lab"))
 
 (load "conf-long")
 (load "conf-tips")
 (load "utility-functions")
 
 (load "init-ac")
+;(load "init-3dmaze")
 (load "init-anything")
 (load "init-color")
 (load "init-dired")
@@ -68,5 +75,3 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
-
-

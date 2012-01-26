@@ -1,5 +1,4 @@
 ;; utility-functions.el
-;; $Last update: 2011/12/24  2:47:04 $
 ;; ’·‚ß‚ÌŠÖ”ŒQ
 
 ;; defkey -- merge 'kbd' macro

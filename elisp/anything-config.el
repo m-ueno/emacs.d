@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ;;; anything-config.el --- Applications libary for `anything.el'
 
 ;; Filename: anything-config.el
