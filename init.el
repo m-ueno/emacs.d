@@ -46,7 +46,7 @@
 (load "init-dired")
 (load "init-font")          ;Consolas13
 (load "init-flymake")
-(load "init-goby")
+;(load "init-goby")
 (load "init-lang")
 (load "init-load")
 (load "init-magit")
