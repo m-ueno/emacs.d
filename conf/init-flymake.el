@@ -3,7 +3,7 @@
 
 (set-face-background 'flymake-errline "tomato")
 (set-face-foreground 'flymake-errline "black")
-;(set-face-background 'flymake-warnline "yellow")
+                                        ;(set-face-background 'flymake-warnline "yellow")
 (set-face-background 'flymake-warnline "dark slate blue")
 (set-face-foreground 'flymake-warnline "white")
 
@@ -16,23 +16,23 @@
   (interactive)
   (progn
     (let* ( (line-no (flymake-current-line-no) )
-	    (line-err-info-list (nth 0 (flymake-find-err-info 
-					flymake-err-info line-no)))
-	    (count (length line-err-info-list)))
+            (line-err-info-list (nth 0 (flymake-find-err-info 
+                                        flymake-err-info line-no)))
+            (count (length line-err-info-list)))
       (while (> count 0)
-	(when line-err-info-list
-	  (let* ((file (flymake-ler-file (nth (1- count) 
-					      line-err-info-list)))
-		 (full-file (flymake-ler-full-file (nth (1- count)
-							line-err-info-list)))
-		 (text (flymake-ler-text (nth (1- count) line-err-info-list)))
-		 (line (flymake-ler-line (nth (1- count) 
-					      line-err-info-list))))
-	    (message "[%s] %s" line text)))
-	(setq count (1- count)))))
+        (when line-err-info-list
+          (let* ((file (flymake-ler-file (nth (1- count) 
+                                              line-err-info-list)))
+                 (full-file (flymake-ler-full-file (nth (1- count)
+                                                        line-err-info-list)))
+                 (text (flymake-ler-text (nth (1- count) line-err-info-list)))
+                 (line (flymake-ler-line (nth (1- count) 
+                                              line-err-info-list))))
+            (message "[%s] %s" line text)))
+        (setq count (1- count)))))
   (sit-for 60.0))
 (global-set-key "\C-cd"
-		'flymake-show-and-sit)
+                'flymake-show-and-sit)
 
 ;; flymake C
 (defun flymake-c-init ()
@@ -46,7 +46,7 @@
 
 (add-hook 'c-mode-hook
           '(lambda ()
-	     (flymake-mode t)))
+             (flymake-mode t)))
 
 ;;; flymake JS
 ;; 断念；；
@@ -54,8 +54,8 @@
 ;; (add-hook 'javascript-mode-hook
 ;;      (lambda () (flymake-mode t)))
 
-;http://d.hatena.ne.jp/kazu-yamamoto/20071029/1193651325
-;(require 'flymake-jsl)
+                                        ;http://d.hatena.ne.jp/kazu-yamamoto/20071029/1193651325
+                                        ;(require 'flymake-jsl)
 
 ;;; flymake Perl
 ;; http://d.hatena.ne.jp/antipop/20080701/1214838633
@@ -91,7 +91,7 @@
 (add-hook 'cperl-mode-hook 'flymake-perl-load)
 
 ;; flymake Ruby
-; Invoke ruby with '-c' to get syntax checking
+                                        ; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
@@ -122,18 +122,18 @@
   (let ((line-no (line-number-at-pos))) 
     (dolist (elem flymake-err-info) 
       (if (eq (car elem) line-no) 
-	  (let ((err (car (second elem)))) 
-	    (message "%s" (fly-pyflake-determine-message err))))))) 
+          (let ((err (car (second elem)))) 
+            (message "%s" (fly-pyflake-determine-message err))))))) 
 
 (defun fly-pyflake-determine-message (err) 
   "pyflake is flakey if it has compile problems, this adjusts the 
 message to display, so there is one ;)" 
   (cond ((not (or (eq major-mode 'Python) (eq major-mode 'python-mode) t))) 
-	((null (flymake-ler-file err)) 
-	 ;; normal message do your thing 
-	 (flymake-ler-text err)) 
-	(t ;; could not compile err 
-	 (format "compile error, problem on line %s" (flymake-ler-line err))))) 
+        ((null (flymake-ler-file err)) 
+         ;; normal message do your thing 
+         (flymake-ler-text err)) 
+        (t ;; could not compile err 
+         (format "compile error, problem on line %s" (flymake-ler-line err))))) 
 
 (defadvice flymake-goto-next-error (after display-message activate compile) 
   "Display the error in the mini-buffer rather than having to mouse over it" 
