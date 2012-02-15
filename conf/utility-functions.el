@@ -133,6 +133,7 @@
 (fset 'memo
    [?\M-< S-f5 ?\C-j ?\C-q ?\C-i?* ?  ?\C-o ?\C-o])
 (defvar my-save-buffer-hook nil)
+;(defvar my-save-buffer-hook #'delete-trailing-whitespace)
 (defun save-buffer-wrapper ()
   (interactive)
   (let ((tostr (concat "$Last update: " (format-time-string "%Y/%m/%d %k:%M:%S") " $")))
@@ -141,6 +142,7 @@
         (while (re-search-forward
                 "\\$Last update\\([0-9/: ]*\\)?\\$" nil t)
           (replace-match tostr nil t)))
+    (delete-trailing-whitespace)
     (run-hooks 'my-save-buffer-hook)
     (save-buffer)))
 

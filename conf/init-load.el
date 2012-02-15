@@ -1,5 +1,5 @@
 ;; *** init-load.el ***
-;; $Last update: 2012/01/24 19:53:28 $
+;; $Last update: 2012/02/13 19:41:21 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
@@ -51,22 +51,7 @@
 
 ;; 4-8 ファイルを自動保存する
 (require 'auto-save-buffers)
-(setq auto-save-buffers-timer nil)
-(defun start-auto-save-buffers (&optional delay)
-  (interactive)
-  (let ((delay (or delay 0.5)))
-    (setq auto-save-buffers-timer
-          (run-with-idle-timer delay t 'auto-save-buffers))))
-(defun toggle-auto-save-buffers (&optional delay)
-  (interactive)
-  (let ((delay (or delay 0.5)))
-    (if (not auto-save-buffers-timer)
-        (start-auto-save-buffers delay)
-      (progn (cancel-timer auto-save-buffers-timer)
-             (setq auto-save-buffers-timer nil))))
-  (print auto-save-buffers-timer))
-
-(toggle-auto-save-buffers)
+(auto-save-buffers-toggle)
   
 ;; 4-2 ファイル名がかぶった場合にバッファ名をわかりやすくする
 (require 'uniquify)

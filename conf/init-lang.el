@@ -165,8 +165,6 @@
             (setq indent-tabs-mode nil)))
 
 ;; Perl
-                                        ;(add-to-list 'auto-mode-alist '(("\\.pl" . cperl-mode) ("\\.pm" . cperl-mode) ("\\.xcr$" . cperl-mode))) ;appendしないとだめだった。
-                                        ;(autoload 'perl-mode "cperl-mode" "alternate mode for editin Pelr programs" t) ;非動作？
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist '("\\.xcr$" . cperl-mode))
 (add-to-list 'auto-mode-alist '("\\.t$" . cperl-mode))
@@ -176,7 +174,7 @@
             (cperl-set-style "PerlStyle")
             (setq indent-tabs-mode nil  ;スペースを使う
                                         ;cf. untabify
-                  tab-width 4
+                  tab-width 4  
                   cperl-indent-level 4
                   cperl-continued-statement-offset 4
                   cperl-close-paren-offset -4
@@ -186,6 +184,7 @@
                   cperl-label-offset -4
                   cperl-tab-always-indent nil
                   cperl-font-lock t)
+
             (set-face-bold-p 'cperl-array-face nil)
             (set-face-background 'cperl-array-face nil)
             (set-face-bold-p 'cperl-hash-face nil)
@@ -194,7 +193,7 @@
             (require 'perl-completion)
             (perl-completion-mode t)
             (setq plcmp-buffer-dabbrev-expansions-number 0)
-            (define-key cperl-mode-map (kbd "C-c C-j") 'jaunte)))
+            (define-key cperl-mode-map (kbd "C-c C-j") 'jaunte))) ;re-override
 ;; perldoc -m を開く
 
 ;; モジュールソースバッファの場合はその場で、
@@ -252,13 +251,13 @@
 
 ;; (require 'ruby-electric)
 ;; inf-ruby -- inferior ruby
-(autoload 'run-ruby "inf-ruby"
-  "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (inf-ruby-keys)))
+;; (autoload 'run-ruby "inf-ruby"
+;;   "Run an inferior Ruby process")
+;; (autoload 'inf-ruby-keys "inf-ruby"
+;;   "Set local key defs for inf-ruby in ruby-mode")
+;; (add-hook 'ruby-mode-hook
+;;           '(lambda ()
+;;              (inf-ruby-keys)))
 
 ;;Yahtml
 ;; (setq auto-mode-alist
