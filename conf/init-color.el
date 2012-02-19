@@ -21,7 +21,15 @@
         ))
 (require 'whitespace)
 (global-whitespace-mode 1)
-(set-face-foreground 'whitespace-space "LightSlateGray")
+(set-face-foreground 'whitespace-space "LightSlateGray")  
 (set-face-background 'whitespace-space "DarkSlateGray")
 (set-face-foreground 'whitespace-tab "LightSlateGray")
 (set-face-background 'whitespace-tab "DarkSlateGray")
+
+;(setq-default show-trailing-whitespace t)
+;(remove-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(defun describe-face-at-point ()
+  (interactive)
+  (message "%s" (get-char-property (point) 'face)))
+
