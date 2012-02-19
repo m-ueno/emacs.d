@@ -1,5 +1,5 @@
 ;; *** init-load.el ***
-;; $Last update: 2012/01/24 19:53:28 $
+;; $Last update: 2012/02/20  2:09:26 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
@@ -51,28 +51,14 @@
 
 ;; 4-8 ファイルを自動保存する
 (require 'auto-save-buffers)
-(setq auto-save-buffers-timer nil)
-(defun start-auto-save-buffers (&optional delay)
-  (interactive)
-  (let ((delay (or delay 0.5)))
-    (setq auto-save-buffers-timer
-          (run-with-idle-timer delay t 'auto-save-buffers))))
-(defun toggle-auto-save-buffers (&optional delay)
-  (interactive)
-  (let ((delay (or delay 0.5)))
-    (if (not auto-save-buffers-timer)
-        (start-auto-save-buffers delay)
-      (progn (cancel-timer auto-save-buffers-timer)
-             (setq auto-save-buffers-timer nil))))
-  (print auto-save-buffers-timer))
+(run-with-idle-timer 0.5 t 'auto-save-buffers)
+(auto-save-buffers-toggle)
 
-(toggle-auto-save-buffers)
-  
 ;; 4-2 ファイル名がかぶった場合にバッファ名をわかりやすくする
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
-;; 3-10 
+;; 3-10
 ;; `raise-minor-mode-map-alist' / `lower-minor-mode-map-alist' - resolve `minor-mode-map-alist' conflict
 (require 'minor-mode-hack)
 ;; show-minor-mode-map-priority
