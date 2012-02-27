@@ -12,7 +12,7 @@
 (key-chord-define-global "jk" '(lambda()
                                  (interactive)
                                  (vi-mode)
-                                 (message (format "vi-mode"))))
+                                 (message "vi-mode")))
 ;(key-chord-define-global "jk" 'test-keychord)
 
 (key-chord-define-global "hj" 'goto-line)
