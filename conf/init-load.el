@@ -1,5 +1,5 @@
 ;; *** init-load.el ***
-;; $Last update: 2012/02/20  2:09:26 $
+;; $Last update: 2012/02/27 23:36:12 $
 
 ;; ----------------------------------------------------------------
 ;; load elisp
@@ -52,7 +52,7 @@
 ;; 4-8 ファイルを自動保存する
 (require 'auto-save-buffers)
 (run-with-idle-timer 0.5 t 'auto-save-buffers)
-(auto-save-buffers-toggle)
+;(auto-save-buffers-toggle)
 
 ;; 4-2 ファイル名がかぶった場合にバッファ名をわかりやすくする
 (require 'uniquify)

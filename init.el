@@ -49,6 +49,7 @@
 (load "init-ac")
 ;(load "init-3dmaze")
 (load "init-anything")
+(load "init-chord")
 (load "init-color")
 (load "init-dired")
 (load "init-font")          ;Consolas13

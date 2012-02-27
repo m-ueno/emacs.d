@@ -1,4 +1,4 @@
-;;; init-chord.el --- 
+;;; init-chord.el ---
 
 (require 'key-chord)
 (key-chord-mode t)
@@ -9,11 +9,11 @@
   (interactive)
   (view-mode)
   (message "hoge"))
-  
+
 (key-chord-define-global "jk" '(lambda()
                                  (interactive)
-                                 (view-mode)
-                                 (message (format "%s" view-mode))))
+                                 (vi-mode)
+                                 (message (format "vi-mode"))))
 ;(key-chord-define-global "jk" 'test-keychord)
 
 
@@ -22,3 +22,4 @@
 (key-chord-define-global ",."     "<>\C-b")
 ;; (key-chord-define-global [?h ?j]  'undo)  ; the same
 (key-chord-define-global "cv"     'reindent-then-newline-and-indent)
+
