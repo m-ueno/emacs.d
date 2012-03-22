@@ -16,7 +16,7 @@
 ;(key-chord-define-global "jk" 'test-keychord)
 
 (key-chord-define-global "hj" 'goto-line)
-(key-chord-define-global "ja" 'jaunte)
+;;(key-chord-define-global "ja" 'jaunte)
 (key-chord-define-global ",."     "<>\C-b")
 ;; (key-chord-define-global [?h ?j]  'undo)  ; the same
 (key-chord-define-global "cv"     'reindent-then-newline-and-indent)
