@@ -1,6 +1,6 @@
 ;; init-anything
 ;; http://dev.ariel-networks.com/Members/matsuyama/open-anything-emacs
-; WARNING!! 2007îNÇÃãLéñ
+                                        ; WARNING!! 2007Âπ¥„ÅÆË®ò‰∫ã
 (require 'anything)
 (require 'anything-config)
 (require 'anything-grep)
@@ -22,7 +22,7 @@
         ;; anything-c-source-auto-install-from-library
         ))
 
-;http://d.hatena.ne.jp/mooz/20110320/p1
+                                        ;http://d.hatena.ne.jp/mooz/20110320/p1
 (defun anything-font-families ()
   "Preconfigured `anything' for font family."
   (interactive)
@@ -40,6 +40,7 @@
                           'font-lock-face
                           (list :family family :height 2.0 :weight 'bold))))
     (font-lock-mode 1)))
+
 (defvar anything-c-source-font-families
   '((name . "Fonts")
     (init lambda ()
@@ -64,3 +65,18 @@
 
 ;; http://d.hatena.ne.jp/rubikitch/searchdiary?word=%2a%5bone%2dkey%5d
 (gdefkey "C-M-;" 'one-key-menu-anything)
+
+;; http://d.hatena.ne.jp/tsz/20080501/1209651989
+(setf anything-c-source-hyperspec
+      `((name . "Lookup Hyperspec")
+        (candidates . (lambda ()
+                        (let ((symbols nil))
+                          (mapatoms #'(lambda (sym) (push (symbol-name sym) symbols))
+                                    common-lisp-hyperspec-symbols)
+                          symbols)))
+        (action . (("Show Hyperspec" . hyperspec-lookup)))))
+
+(defun anything-hyperspec ()
+  (interactive)
+  (anything-other-buffer '(anything-c-source-hyperspec)
+                         "HyperSpec"))
