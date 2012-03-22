@@ -18,6 +18,7 @@
  "~/.emacs.d/elisp/navi2ch"
  "~/.emacs.d/elisp/slime"
  "~/.emacs.d/elisp/slime/contrib"
+ "~/.emacs.d/elisp/w3m"
  "/usr/share/emacs/site-lisp/"
  )
 
@@ -76,3 +77,5 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+
+(defun ruby-mode-set-encoding () ())
