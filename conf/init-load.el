@@ -1,7 +1,9 @@
-;; *** init-load.el ***
-;; ----------------------------------------------------------------
-;; load elisp
-;; ----------------------------------------------------------------
+;; init-load.el
+(require 'w3m)                          ;for hyperspec
+
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+
 (require '3dmaze)
 
 ;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
@@ -62,14 +64,13 @@
 ;; show-minor-mode-map-priority
 
 ;; 1-9 自動バイトコンパイル
-;; めざわりだなあ
 ;; (require 'auto-async-byte-compile)
 ;; (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
 ;; (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 ;; (setq auto-async-byte-compile-display-function 'display-mode)
 
-(require 'sticky)
-(use-sticky-key ";" sticky-alist:ja)
+;; (require 'sticky)
+;; (use-sticky-key ";" sticky-alist:ja)
 
 ;; ----------------------------------------------------------------
 (require 'irc)

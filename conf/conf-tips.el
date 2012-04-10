@@ -1,4 +1,7 @@
 ;;; conf-tips.el --- default function (short configure)
+;; id:tomoya 20091015
+(setq comment-style 'multi-line)
+
 ;; id:rubikitch
 ;; http://d.hatena.ne.jp/rubikitch/20100210/emacs
 (defun other-window-or-split ()
@@ -145,7 +148,7 @@
 ;; (add-hook 'c-mode-hook
 ;;           '(lambda ()
 ;;              (define-key c-mode-map "\C-c>" 'indent-region)))
-;; とするか、あるいは c-mode-map を書かずに 
+;; とするか、あるいは c-mode-map を書かずに
 ;; (add-hook 'c-mode-hook
 ;;           '(lambda ()
 ;; 	     (local-set-key "\C-c>" 'indent-region)))
@@ -154,7 +157,7 @@
 
 ;; defkey / gdefkey マクロを追加した(Emacs Lisp TB)
 
-(global-set-key "\C-h" 'backward-delete-char)  
+(global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\C-z" 'scroll-down)
 (global-set-key "\C-x\C-x" 'smart-run)
 

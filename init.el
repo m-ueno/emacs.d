@@ -20,6 +20,7 @@
  "~/.emacs.d/elisp/navi2ch"
  "~/.emacs.d/elisp/slime"
  "~/.emacs.d/elisp/slime/contrib"
+ "~/.emacs.d/elisp/w3m"
  "/usr/share/emacs/site-lisp/"
  )
 
@@ -85,3 +86,4 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+(defun ruby-mode-set-encoding () ())

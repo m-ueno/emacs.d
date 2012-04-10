@@ -135,7 +135,7 @@
   (c-toggle-hungry-state 1)
   (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
                                         ; (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
-  
+
   (define-key js2-mode-map "\C-m" 'newline-and-indent)
                                         ; (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
                                         ; (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
@@ -174,7 +174,7 @@
             (cperl-set-style "PerlStyle")
             (setq indent-tabs-mode nil  ;スペースを使う
                                         ;cf. untabify
-                  tab-width 4  
+                  tab-width 4
                   cperl-indent-level 4
                   cperl-continued-statement-offset 4
                   cperl-close-paren-offset -4
@@ -249,23 +249,5 @@
 (custom-set-variables '(current-language-environment "Japanese"))
 (setq ruby-deep-indent-paren-style nil) ; http://www.hinet.mydns.jp/tdiary/20060923.html
 
-;; (require 'ruby-electric)
-;; inf-ruby -- inferior ruby
-;; (autoload 'run-ruby "inf-ruby"
-;;   "Run an inferior Ruby process")
-;; (autoload 'inf-ruby-keys "inf-ruby"
-;;   "Set local key defs for inf-ruby in ruby-mode")
-;; (add-hook 'ruby-mode-hook
-;;           '(lambda ()
-;;              (inf-ruby-keys)))
-
-;;Yahtml
-;; (setq auto-mode-alist
-;;       (cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
-;; (autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
-;; (setq yahtml-www-browser "firefox")
-;; (setq yahtml-path-url-alist
-;;      '(("/home/yuuji/public_html" . "http://www.mynet/~yuuji")
-;;      ("/home/staff/yuuji/html" . "http://www.othernet/~yuuji")))
-
+(defun ruby-mode-set-encoding () ())
 

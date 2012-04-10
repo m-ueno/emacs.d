@@ -8,10 +8,6 @@
           lisp-font-lock-keywords-2))
 
 ;; SLIME
-(setq inferior-lisp-program "clisp -K full")
-;(setq inferior-lisp-program "sbcl")
-(require 'slime)
-(require 'slime-autoloads)
 (slime-setup
  '(inferior-slime
    ;slime-asdf
@@ -53,7 +49,7 @@
   (slime command coding-system))
 
 ;; C-c Lでslime起動
-(define-key global-map (kbd "C-c L") 'my-slime)
+(gdefkey "C-c L" 'my-slime)
 ;; slime 終わり----------------
 
 

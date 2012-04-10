@@ -6,21 +6,21 @@
       (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
 
 (add-hook 'yatex-mode-hook #'(lambda () (progn (auto-fill-mode nil)
-					       (show-paren-mode t))))
+                                               (show-paren-mode t))))
 
 (setq dviprint-command-format "dvipdfmx %s") ;C-c t l
 
-;;; TeX src-special �Τ��������
-;;; emacs-xdviϢ��
-(if (load "xdvi-search" t) ; ɬ��
-    (server-start) ; ɬ��
+;;; TeX src-special ¤Î¤¿¤á¤ÎÀßÄê
+;;; emacs-xdviÏ¢·È
+(if (load "xdvi-search" t) ; É¬¿Ü
+    (server-start) ; É¬¿Ü
   (progn
     (custom-set-variables
-     '(server-switch-hook (quote (raise-frame)))) ; �����
+     '(server-switch-hook (quote (raise-frame)))) ; Áë¤ò¾å¤Ë
     (custom-set-faces)
     (add-hook 'yatex-mode-hook
-	      '(lambda ()
-		 (define-key YaTeX-mode-map "\C-c\C-j" 'xdvi-jump-to-line)))))
+              '(lambda ()
+                 (define-key YaTeX-mode-map "\C-c\C-j" 'xdvi-jump-to-line)))))
 
 (add-hook 'LaTeX-mode-hook
           '(lambda ()
@@ -40,3 +40,10 @@
                              (concat "%(PDF)jbibtex" opt " %s"))
                      (message "pLaTeX UTF-8 flag enabled"))
                  (message "pLaTeX UTF-8 flag disabled")))))
+
+;; M-x align
+(require 'align)
+(add-to-list 'align-rules-list
+             '(yatex-table
+               (regexp . "\\(\\s-*\\)&")
+               (modes  . '(yatex-mode))))

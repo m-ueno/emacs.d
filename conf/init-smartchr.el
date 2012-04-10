@@ -5,9 +5,7 @@
 (defun my-smartchr-setting ()
   (local-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
   (local-set-key (kbd "'") (smartchr '("'" "'`!!''")))
-  
-  (local-set-key (kbd ">") (smartchr '(">" "->" ">>")))
-  
+
   (local-set-key (kbd "(") (smartchr '("(" "(`!!')")))
   (local-set-key (kbd "{") (smartchr '("{" "{`!!'}" "{ `!!' }" "{\n`!!'\n}")))
   (local-set-key (kbd "[") (smartchr '("[" "[`!!']")))
