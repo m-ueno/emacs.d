@@ -14,6 +14,8 @@
  "~/.emacs.d/elisp"
  "~/.emacs.d/elisp/3dmaze"
  "~/.emacs.d/elisp/goby"
+ "~/.emacs.d/elisp/haskell-mode"
+ "~/.emacs.d/elisp/iiimecf"
  "~/.emacs.d/elisp/jshint-mode"
  "~/.emacs.d/elisp/navi2ch"
  "~/.emacs.d/elisp/slime"
@@ -49,6 +51,7 @@
 (load "init-ac")
 ;(load "init-3dmaze")
 (load "init-anything")
+(load "init-atok")
 (load "init-chord")
 (load "init-color")
 (load "init-dired")
@@ -58,7 +61,7 @@
 (load "init-lang")
 (load "init-load")
 (load "init-magit")
-(load "init-mozc")
+;(load "init-mozc")
 ;(load "init-myopera")
 (load "init-outline")
 (load "init-slime")             ; init-lispを統合
@@ -76,3 +79,9 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+
+(load "~/.emacs.d/elisp/haskell-mode/haskell-site-file")
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
