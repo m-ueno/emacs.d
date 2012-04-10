@@ -109,7 +109,7 @@
     (iiimcf-server-control-keyforward last-input-event)
     (iiimcf-set-icfocus iiimcf-server-control-ic-id)))
 
-(define-key iiimcf-server-control-initial-state-keymap
-  (kbd "<C-backspace>") ; ATOKでは C-BS に確定アンドゥが割り当ててある
-  'atok-undo-commit)
+;; (define-key iiimcf-server-control-initial-state-keymap
+;;   (kbd "<C-backspace>") ; ATOKでは C-BS に確定アンドゥが割り当ててある
+;;   'atok-undo-commit)
 
