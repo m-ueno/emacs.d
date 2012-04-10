@@ -1,23 +1,23 @@
-(require 'mozc)  ; or (load-file "/path/to/mozc.el")
+;; -*- coding:utf-8-auto -*-
+(require 'mozc)
 (set-language-environment "Japanese")
 (setq default-input-method "japanese-mozc")
 
 (global-set-key [henkan]
-		(lambda()
-		  (interactive)
-		  (set-input-method "japanese-mozc")))
+        (lambda()
+          (interactive)
+          (set-input-method "japanese-mozc")))
 
 (global-set-key [muhenkan]
-		(lambda()
-		  (interactive)
-		  (set-input-method nil)))
+        (lambda()
+          (interactive)
+          (set-input-method nil)))
 
 ;;http://d.hatena.ne.jp/kitokitoki/20110815/p4
-(require 'ccc)
+(require 'ccc) ;;; ccc.el --- cursor color control
 
 (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
 
-;; mozc-mode 時はカーソルを青にする
 (setq mozc-color "goldenrod")
 
 (defun mozc-change-cursor-color ()
@@ -26,7 +26,7 @@
     (set-buffer-local-cursor-color nil)))
 
 (defadvice toggle-input-method (after my-toggle-input-method activate)
-;  (key-chord-mode 1) ;key-chord.elを利用していないならこの行は不要
+
   (mozc-change-cursor-color))
 
 (defsubst mozc-session-sendkey (key-list)
@@ -36,12 +36,11 @@ mozc::commands::Output in C++.  Return nil on error.
 
 KEY-LIST is a list of key code(97 = ?a) and/or key symbols('space, 'shift,
 'meta and so on)."
-  (when (equal '(zenkaku-hankaku) key-list) ;; 全角半角は強引に C-\ だったことにする
+  (when (equal '(zenkaku-hankaku) key-list)
     (setq key-list '(110 control)))
   (when (mozc-session-create)
     (apply 'mozc-session-execute-command 'SendKey key-list)))
 
-;; ----------------おれおれ
 (setq mozc-cursor-color "goldenrod")
 ;; (defadvice set-input-method (before)
 ;;   (if current-input-method
