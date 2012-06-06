@@ -19,6 +19,7 @@
  "~/.emacs.d/elisp/slime"
  "~/.emacs.d/elisp/slime/contrib"
  "~/.emacs.d/elisp/w3m"
+ "~/.emacs.d/elisp/yasnippet"
  "/usr/share/emacs/site-lisp/"
  )
 
@@ -28,13 +29,6 @@
   `(condition-case err
        (progn ,@body)
      (error (message "[eval-safe] %s" err))))
-
-;; defkey -- merge 'kbd' macro
-;; Emacs LISP Technique Bible
-(defmacro defkey (keymap key command)
-  `(define-key ,keymap ,(read-kbd-macro key) ,command))
-(defmacro gdefkey (key command)
-  `(defkey global-map ,key ,command))
 
 (if (string-equal "gnu/linux" system-type)
     (load "init-linux"))
@@ -64,8 +58,10 @@
 (load "init-outline")
 (load "init-slime")             ; init-lispを統合
 (load "init-smartchr")
-;(load "init-yas")
+(load "init-yas2")
 (load "init-yatex")             ; init-auctex/init-yatexを分離
+
+(prefer-coding-system 'utf-8)
 
 ;; for auto-install
 ;(setq url-proxy-services '(("http" . "proxy.kuins.net:8080")))
@@ -79,3 +75,16 @@
 (setq default-buffer-file-coding-system 'utf-8)
 
 (defun ruby-mode-set-encoding () ())
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(current-language-environment "Japanese")
+ '(ruby-insert-encoding-magic-comment nil))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )

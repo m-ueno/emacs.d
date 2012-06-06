@@ -20,4 +20,4 @@
 (key-chord-define-global ",."     "<>\C-b")
 ;; (key-chord-define-global [?h ?j]  'undo)  ; the same
 (key-chord-define-global "cv"     'reindent-then-newline-and-indent)
-
+(key-chord-define-global "qp" #'(lambda () (interactive) (find-file "~/Dropbox/memo.memo")))

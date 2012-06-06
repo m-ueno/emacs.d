@@ -91,6 +91,7 @@
 
 ;; recursive byte-compile
 ;; http://labs.unoh.net/2008/07/emacstips_1.html
+;; cf. #'byte-recompile-directory
 (defun my-byte-compile-directory ()
   (interactive)
   (defun byte-compile-directories (dir)
@@ -132,6 +133,7 @@
 ;; for cl-memo
 (fset 'memo
    [?\M-< S-f5 ?\C-j ?\C-q ?\C-i?* ?  ?\C-o ?\C-o])
+
 (defvar my-save-buffer-hook nil)
 ;(defvar my-save-buffer-hook #'delete-trailing-whitespace)
 (defun save-buffer-wrapper ()

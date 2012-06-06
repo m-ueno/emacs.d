@@ -1,11 +1,12 @@
-# -*- coding: utf-8 -*-
+;;;# -*- coding: utf-8 -*-
 ;;; init-yas.el ---
 
-;(add-to-list 'load-path "./.emacs.d/elisp/yasnippet/yasnippet.el")
 (require 'yasnippet)
-(require 'yasnippet-config)
+(require 'yasnippet-config)             ;id:rubikitch
 (setq yas/root-directory "~/.emacs.d/snippets")
 ;(yas/setup)
+
+(yas/global-mode 1)
 
 ;; id:antipop
 ;; トリガはSPC, 次の候補への移動はTAB

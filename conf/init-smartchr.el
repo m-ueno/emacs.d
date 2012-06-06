@@ -14,11 +14,11 @@
   (local-set-key (kbd "%") (smartchr '("<%= `!!' %>" "%")))
   )
 
-(add-hook 'c-mode-hook 'my-smartchr-setting)
-(add-hook 'javascript-mode-hook 'my-smartchr-setting)
-(add-hook 'perl-mode-hook 'my-smartchr-setting)
-(add-hook 'ruby-mode-hook 'my-smartchr-setting)
-(add-hook 'html-mode-hook 'my-smartchr-setting-rails)
+;; (add-hook 'c-mode-hook 'my-smartchr-setting)
+;; (add-hook 'javascript-mode-hook 'my-smartchr-setting)
+;; (add-hook 'perl-mode-hook 'my-smartchr-setting)
+;; (add-hook 'ruby-mode-hook 'my-smartchr-setting)
+;; (add-hook 'html-mode-hook 'my-smartchr-setting-rails)
 
 ;; ;; { で閉じ括弧を補完(Cのcompletetion と競合)
 ;; ; substitute `!!' with cursor

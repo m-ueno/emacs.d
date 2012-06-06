@@ -1,4 +1,5 @@
 ;;; conf-tips.el --- default function (short configure)
+
 ;; id:tomoya 20091015
 (setq comment-style 'multi-line)
 
@@ -37,9 +38,11 @@
 (global-set-key [(ctrl down)] '(lambda (arg) (interactive "p")
                                  (shrink-window (- arg))))
 
+;; mode line
 (display-time)
 (global-hl-line-mode t)
 (set-face-background 'hl-line "dark slate gray")
+(display-battery-mode t)
 
 ;(ffap-bindings)
 

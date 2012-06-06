@@ -4,7 +4,7 @@
 
 ;; Author: Tomohiro Matsuyama <tomo@cx4a.org>
 ;; Keywords: convenience
-;; Version: 0.4
+;; Version: 0.3
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -69,19 +69,7 @@
 
 
 
-;;; Common
-
-(defmacro popwin:save-selected-window (&rest body)
-  "Evaluate BODY saving the selected window."
-  `(with-selected-window (selected-window) ,@body))
-
-(defun popwin:switch-to-buffer (buffer-or-name &optional norecord)
-  "Call `switch-to-buffer' forcing BUFFER-OF-NAME be displayed in
-the selected window."
-  (with-no-warnings 
-    (if (>= emacs-major-version 24)
-        (switch-to-buffer buffer-or-name norecord t)
-      (switch-to-buffer buffer-or-name norecord))))
+;;; Common API
 
 (defun popwin:last-selected-window ()
   "Return currently selected window or lastly selected window if
@@ -93,14 +81,6 @@ minibuffer window is selected."
 (defun popwin:buried-buffer-p (buffer)
   "Return t if BUFFER might be thought of as a buried buffer."
   (eq (car (last (buffer-list))) buffer))
-
-(defun popwin:called-interactively-p ()
-  (with-no-warnings
-    (if (or (>= emacs-major-version 24)
-            (and (= emacs-major-version 23)
-                 (>= emacs-minor-version 2)))
-        (called-interactively-p 'any)
-      (called-interactively-p))))
 
 (defvar popwin:empty-buffer nil
   "Marker buffer of indicating a window of the buffer is being a
@@ -162,7 +142,7 @@ horizontal factor HFACTOR, and vertical factor VFACTOR."
           (cdr node)
         (popwin:adjust-window-edges window edges hfactor vfactor)
         (with-selected-window window
-          (popwin:switch-to-buffer buffer t))
+          (switch-to-buffer buffer t))
         (when selected
           (select-window window)))
     (destructuring-bind (dir edges . windows) node
@@ -241,8 +221,7 @@ window-configuration."
          (root-win (popwin:last-selected-window))
          (hfactor 1)
          (vfactor 1))
-    (popwin:save-selected-window
-     (delete-other-windows root-win))
+    (delete-other-windows root-win)
     (let ((root-width (window-width root-win))
           (root-height (window-height root-win)))
       (when adjust
@@ -259,7 +238,7 @@ window-configuration."
           (popwin:create-popup-window-1 root-win size position)
         ;; Mark popup-win being a popup window.
         (with-selected-window popup-win
-          (popwin:switch-to-buffer (popwin:empty-buffer) t))
+          (switch-to-buffer (popwin:empty-buffer) t))
         (popwin:replicate-window-config master-win root hfactor vfactor)
         (list master-win popup-win)))))
 
@@ -431,7 +410,7 @@ BUFFER."
               popwin:selected-window (selected-window))
         (popwin:start-close-popup-window-timer))))
   (with-selected-window popwin:popup-window
-    (popwin:switch-to-buffer buffer))
+    (switch-to-buffer buffer))
   (setq popwin:popup-buffer buffer
         popwin:popup-window-stuck-p stick)
   (if noselect
@@ -459,10 +438,6 @@ be closed by `popwin:close-popup-window'."
 
 ;;; Special Display
 
-(defmacro popwin:without-special-display (&rest body)
-  "Evaluate BODY without special displaying."
-  `(let (display-buffer-function special-display-function) ,@body))
-
 (defcustom popwin:special-display-config
   '(("*Help*")
     ("*Completions*" :noselect t)
@@ -470,14 +445,11 @@ be closed by `popwin:close-popup-window'."
     ("*Occur*" :noselect t))
   "Configuration of special displaying buffer for
 `popwin:display-buffer' and
-`popwin:special-display-popup-window'. The value is a list of
-CONFIG as a form of (PATTERN . KEYWORDS) where PATTERN is a
-pattern of specifying buffer and KEYWORDS is a list of a pair of
-key and value. PATTERN is in general a buffer name, a symbol
-specifying major-mode of buffer, or a predicate function which
-takes one argument: the buffer. If CONFIG is a string or a
-symbol, PATTERN will be CONFIG and KEYWORDS will be
-empty. Available keywords are following:
+`popwin:special-display-popup-window'. The value is a list
+of (PATTERN . KEYWORDS) where PATTERN is a pattern of specifying
+buffer and KEYWORDS is a list of a pair of key and value. PATTERN
+is in general a buffer name, otherwise a symbol specifying
+major-mode of buffer. Available keyword are following:
 
   regexp: If the value is non-nil, PATTERN will be used as regexp
     to matching buffer.
@@ -509,19 +481,13 @@ buffers will be shown at the left of the frame with width 80."
 
 (defun popwin:original-display-buffer (buffer &optional not-this-window)
   "Call `display-buffer' for BUFFER without special displaying."
-  (popwin:without-special-display
-   ;; Close the popup window here so that the popup window won't to
-   ;; be splitted.
-   (when (and (eq (selected-window) popwin:popup-window)
-              (not (same-window-p (buffer-name buffer))))
-     (popwin:close-popup-window))
-   (if (and (>= emacs-major-version 24)
-            (boundp 'action)
-            (boundp 'frame))
-       ;; Use variables ACTION and FRAME which are formal parameters
-       ;; of DISPLAY-BUFFER.
-       (display-buffer buffer action frame)
-     (display-buffer buffer not-this-window))))
+  (let (display-buffer-function special-display-function)
+    ;; Close the popup window here so that the popup window won't to
+    ;; be splitted.
+    (when (and (eq (selected-window) popwin:popup-window)
+               (not (same-window-p (buffer-name buffer))))
+      (popwin:close-popup-window))
+    (display-buffer buffer not-this-window)))
 
 (defun* popwin:display-buffer-1 (buffer-or-name &key default-config-keywords if-buffer-not-found if-config-not-found)
   "Display BUFFER-OR-NAME, if possible, in a popup
@@ -544,8 +510,7 @@ specifies default values of the selected config."
         with win-stick
         with found
         until found
-        for config in popwin:special-display-config
-        for (pattern . keywords) = (if (atom config) (list config) config) do
+        for (pattern . keywords) in popwin:special-display-config do
         (destructuring-bind (&key regexp width height position noselect stick)
             (append keywords default-config-keywords)
           (let ((matched (cond ((and (stringp pattern) regexp)
@@ -554,8 +519,6 @@ specifies default values of the selected config."
                                 (string= pattern name))
                                ((symbolp pattern)
                                 (eq pattern mode))
-                               ((functionp pattern)
-                                (funcall pattern buffer))
                                (t (error "Invalid pattern: %s" pattern)))))
             (when matched
               (setq found t
@@ -585,9 +548,9 @@ usual. This function can be used as a value of
   (popwin:display-buffer-1
    buffer-or-name
    :if-config-not-found
-   (unless (popwin:called-interactively-p)
-     (lambda (buffer)
-       (popwin:original-display-buffer buffer not-this-window)))))
+   (unless (interactive-p)
+     (lambda (buffer-or-name)
+       (popwin:original-display-buffer buffer-or-name not-this-window)))))
 
 (defun popwin:special-display-popup-window (buffer &rest ignore)
   "The `special-display-function' with a popup window."
@@ -642,21 +605,21 @@ usual. This function can be used as a value of
 
 (defvar popwin:keymap
   (let ((map (make-keymap)))
-    (define-key map "b"    'popwin:popup-buffer)
+    (define-key map "b" 'popwin:popup-buffer)
     (define-key map "\C-b" 'popwin:popup-buffer)
     (define-key map "\M-b" 'popwin:popup-buffer-tail)
-    (define-key map "o"    'popwin:display-buffer)
+    (define-key map "o" 'popwin:display-buffer)
     (define-key map "\C-o" 'popwin:display-buffer)
-    (define-key map "p"    'popwin:display-last-buffer)
+    (define-key map "p" 'popwin:display-last-buffer)
     (define-key map "\C-p" 'popwin:display-last-buffer)
-    (define-key map "f"    'popwin:find-file)
+    (define-key map "f" 'popwin:find-file)
     (define-key map "\C-f" 'popwin:find-file)
     (define-key map "\M-f" 'popwin:find-file-tail)
-    (define-key map "s"    'popwin:select-popup-window)
+    (define-key map "s" 'popwin:select-popup-window)
     (define-key map "\C-s" 'popwin:select-popup-window)
     (define-key map "\M-s" 'popwin:stick-popup-window)
-    (define-key map "0"    'popwin:close-popup-window)
-    (define-key map "m"    'popwin:messages)
+    (define-key map "0" 'popwin:close-popup-window)
+    (define-key map "m" 'popwin:messages)
     (define-key map "\C-m" 'popwin:messages)
     map)
   "Default keymap for popwin commands. Use like:

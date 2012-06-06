@@ -249,5 +249,3 @@
 (custom-set-variables '(current-language-environment "Japanese"))
 (setq ruby-deep-indent-paren-style nil) ; http://www.hinet.mydns.jp/tdiary/20060923.html
 
-(defun ruby-mode-set-encoding () ())
-
