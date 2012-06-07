@@ -4,3 +4,6 @@
 [submodule "snippets/sh-mode"]
 	path = snippets/sh-mode
 	url = https://github.com/bmaland/yasnippet-sh-mode.git
+[submodule "snippets/java-mode"]
+	path = snippets/java-mode
+	url = https://github.com/nekop/yasnippet-java-mode.git
