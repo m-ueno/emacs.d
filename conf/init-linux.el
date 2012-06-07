@@ -1,4 +1,4 @@
-;;; init-linux.el --- 
+;;; init-linux.el ---
 
 (when window-system
   (progn
@@ -10,4 +10,7 @@
 
 (provide 'init-linux)
 ;;; init-linux.el ends here
+
+(require 'w3m)                          ;for hyperspec
+(require '3dmaze)
 

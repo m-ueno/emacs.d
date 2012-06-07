@@ -10,13 +10,19 @@
 
 (setq dviprint-command-format "dvipdfmx %s") ;C-c t l
 
-;;; TeX src-special ¤Î¤¿¤á¤ÎÀßÄê
-;;; emacs-xdviÏ¢·È
-(if (load "xdvi-search" t) ; É¬¿Ü
-    (server-start) ; É¬¿Ü
+;; http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
+;; for Windows
+(require 'server)
+(when (and (= emacs-major-version 23)
+           (>= emacs-minor-version 1)
+           (equal window-system 'w32))
+  (defun server-ensure-safe-dir (dir) "Noop" t))
+
+(if (load "xdvi-search" t)
+    (server-start)
   (progn
     (custom-set-variables
-     '(server-switch-hook (quote (raise-frame)))) ; Áë¤ò¾å¤Ë
+     '(server-switch-hook (quote (raise-frame))))
     (custom-set-faces)
     (add-hook 'yatex-mode-hook
               '(lambda ()

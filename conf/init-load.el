@@ -1,10 +1,6 @@
 ;; init-load.el
-(require 'w3m)                          ;for hyperspec
-
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
-
-(require '3dmaze)
 
 ;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
 (require 'jaunte)
