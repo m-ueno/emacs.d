@@ -119,17 +119,18 @@
 
 ;; カーソル動かさずにスクロール
 ;; http://norainu.net/mt/archives/2006/11/emacs_elisp.html
-(defun scroll-up-in-place (n)
-  (interactive "p")
-  (previous-line n)
-  (scroll-down n))
-(defun scroll-down-in-place (n)
-  (interactive "p")
-  (next-line n)
-  (scroll-up n))
-(global-set-key "\M-p" 'scroll-up-in-place)
-(global-set-key "\M-n" 'scroll-down-in-place)
-
+;; for Emacs <=23
+(unless (fboundp 'scroll-up-line)
+  (defun scroll-up-line (n)
+    (interactive "p")
+    (previous-line n)
+    (scroll-down n))
+  (defun scroll-down-line (n)
+    (interactive "p")
+    (next-line n)
+    (scroll-up n))
+  (global-set-key "\M-p" 'scroll-up-line)
+  (global-set-key "\M-n" 'scroll-down-line))
 ;; for cl-memo
 (fset 'memo
    [?\M-< S-f5 ?\C-j ?\C-q ?\C-i?* ?  ?\C-o ?\C-o])
@@ -212,4 +213,3 @@
     (set-window-buffer (selected-window) thisbuf)))
 (global-set-key [f2] 'swap-screen)
 (global-set-key [S-f2] 'swap-screen-with-cursor)
-

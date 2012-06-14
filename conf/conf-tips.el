@@ -72,7 +72,8 @@
 
 ;; ファイルを開くとき
 ;; http://www.bookshelf.jp/soft/meadow_23.html
-(partial-completion-mode t)
+(if (<= emacs-major-version 23)
+    (partial-completion-mode t))
 
 ; S-Arrowでウインドウ移動
 (setq windmove-wrap-around t)
