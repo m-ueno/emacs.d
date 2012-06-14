@@ -81,9 +81,9 @@
 
 ;; mcomplete: M-x の補完を iswitchb のようにしたい
 ;; http://www.bookshelf.jp/soft/meadow_27.html
-(require 'mcomplete)
-(load "mcomplete-history")
-(turn-on-mcomplete-mode)
+;; (require 'mcomplete)
+;; (load "mcomplete-history")
+;; (turn-on-mcomplete-mode)
 
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt
@@ -136,4 +136,3 @@
 ;; 閉じた時の場所を保存する
 (setq session-undo-check -1)
 (add-hook 'after-init-hook 'session-initialize)
-
