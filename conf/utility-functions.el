@@ -128,9 +128,10 @@
   (defun scroll-down-line (n)
     (interactive "p")
     (next-line n)
-    (scroll-up n))
-  (global-set-key "\M-p" 'scroll-up-line)
-  (global-set-key "\M-n" 'scroll-down-line))
+    (scroll-up n)))
+(global-set-key "\M-n" 'scroll-up-line)
+(global-set-key "\M-p" 'scroll-down-line)
+
 ;; for cl-memo
 (fset 'memo
    [?\M-< S-f5 ?\C-j ?\C-q ?\C-i?* ?  ?\C-o ?\C-o])
