@@ -1,6 +1,4 @@
 ;; init-load.el
-(require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
 
 ;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
 (require 'jaunte)
@@ -70,7 +68,7 @@
 
 ;; ----------------------------------------------------------------
 (require 'irc)
-(require 'smart-compile+)
+;(require 'smart-compile+)
 
 ;; C-x u
 (require 'undo-tree)
