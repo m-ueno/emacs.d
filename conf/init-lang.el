@@ -240,12 +240,15 @@
 (add-to-list 'auto-mode-alist '("\\.rd$" . rd-mode))
 
 ;; ruby-mode
+(require 'rvm)
+(rvm-use-default)
+
+(setq ruby-insert-encoding-magic-comment nil)
+
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files" t)
 (setq auto-mode-alist
       (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
-(custom-set-variables '(current-language-environment "Japanese"))
 (setq ruby-deep-indent-paren-style nil) ; http://www.hinet.mydns.jp/tdiary/20060923.html
-

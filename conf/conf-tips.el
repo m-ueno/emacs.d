@@ -115,8 +115,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; メニューバー、ツールバー非表示
-(eval-safe (menu-bar-mode -1))
-(eval-safe (tool-bar-mode -1))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; ヴィジブルベルを抑制
 (setq visible-bell nil)
