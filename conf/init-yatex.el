@@ -1,5 +1,4 @@
 ;; init-yatex.el
-(add-to-load-path "~/.emacs.d/elisp/yatex/")
 (require 'yatex)
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (setq auto-mode-alist

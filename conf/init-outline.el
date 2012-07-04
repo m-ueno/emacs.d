@@ -1,4 +1,3 @@
-(add-to-load-path "~/.emacs.d/elisp/ee")
 ;;====================================
 ;;; Ee - Emacs Information Manager
 ;;===================================
