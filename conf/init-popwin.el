@@ -3,7 +3,7 @@
 (setq display-buffer-function 'popwin:display-buffer)
 ;; By default, *Help*, *Completions*, *compilation*, and *Occur*
 
-(gdefkey "C-x p" popwin:keymap)
+(gdefkey "C-x p" 'popwin:keymap)
 
 ;; | Key    | Command                    |
 ;; |--------+----------------------------|

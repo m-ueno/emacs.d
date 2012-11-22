@@ -163,7 +163,6 @@
 
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\C-z" 'scroll-down)
-(global-set-key "\C-x\C-x" 'smart-run)
 
 ;; clipboard
 (global-set-key (kbd "S-<insert>") 'clipboard-yank)

@@ -1,11 +1,16 @@
 ;; init-load.el
 
+;; id: syohex
+(require 'quickrun)
+(global-set-key "\C-x\C-x" 'quickrun)
+
 ;; jaunte: http://kawaguchi.posterous.com/emacshit-a-hint
 (require 'jaunte)
 (global-set-key (kbd "C-c C-j") 'jaunte)
 
 ;; 13-2
 (require 'summarye)
+
 ;; 12-6
 (require 'usage-memo)
 (setq usage-memo-base-directory "~/.emacs.d/umemo")
@@ -67,7 +72,7 @@
 ;; (use-sticky-key ";" sticky-alist:ja)
 
 ;; ----------------------------------------------------------------
-(require 'irc)
+;(require 'irc)
 ;(require 'smart-compile+)
 
 ;; C-x u

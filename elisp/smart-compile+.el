@@ -15,7 +15,7 @@
 ;; Mainly add `smart-run' function, along with many minor
 ;; modifications.
 
-;;{{{ GPL 
+;;{{{ GPL
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@
     ("\\.f90$"        . "f90 %f -o %n")
     ("\\.[Ff]$"       . "f77 %f -o %n")
     ("\\.pl$"         . "perl -cw %f")
-    ("\\.mp$"	      . "mptopdf %f")
+    ("\\.mp$"         . "mptopdf %f")
     ("\\.php$"        . "php %f")
     ("\\.tex$"        . "latex %f")
     ("\\.texi$"       . "makeinfo %f")
@@ -80,8 +80,8 @@
   '(("\\.c$"          . "./%n")
     ("\\.[Cc]+[Pp]*$" . "./%n")
     ("\\.java$"       . "java %n")
-    ("\\.php$"	      . "php %f")
-    ("\\.m$"	      . "./%f")
+    ("\\.php$"        . "php %f")
+    ("\\.m$"          . "./%f")
     ("\\.scm"         . "./%f")
     ("\\.tex$"        . "dvisvga %n.dvi")
     ;;    ("\\.texi$"       . "info %n.info")))
@@ -101,7 +101,7 @@
   (let ((rlist smart-compile-replace-alist))
     (while rlist
       (while (string-match (caar rlist) str)
-	(setq str (replace-match (eval (cdar rlist)) t nil str)))
+        (setq str (replace-match (eval (cdar rlist)) t nil str)))
       (setq rlist (cdr rlist))))
   str)
 
@@ -121,30 +121,30 @@ If arg, do compile interactively."
     (cond
      ;; make ?
      ((and (or (file-readable-p "Makefile")
-	       (file-readable-p "makefile"))
-	   (not (and (local-variable-p 'compile-command)
-		     compile-command))
-	   smart-compile-check-makefile)
+               (file-readable-p "makefile"))
+           (not (and (local-variable-p 'compile-command)
+                     compile-command))
+           smart-compile-check-makefile)
       (if (y-or-n-p "Makefile is found. Try 'make'? ")
-	  (set (make-local-variable 'compile-command) "make ")
-	(setq smart-compile-check-makefile nil)))
+          (set (make-local-variable 'compile-command) "make ")
+        (setq smart-compile-check-makefile nil)))
 
      ;; ant ?
      ((and (or (file-readable-p "build.xml"))
-	   (not (and (local-variable-p 'compile-command)
-		     compile-command))
-	   smart-compile-check-makefile)
+           (not (and (local-variable-p 'compile-command)
+                     compile-command))
+           smart-compile-check-makefile)
       (if (y-or-n-p "build.xml is found. Try 'ant'? ")
-	  (set (make-local-variable 'compile-command) "ant ")
-	(setq smart-compile-check-makefile nil)))
+          (set (make-local-variable 'compile-command) "ant ")
+        (setq smart-compile-check-makefile nil)))
 
      ;; else
      (t
       (if (and (local-variable-p 'compile-command)
-	       compile-command)
-	  (progn
-	    (call-interactively 'compile)
-	    (setq not-yet nil)))))
+               compile-command)
+          (progn
+            (call-interactively 'compile)
+            (setq not-yet nil)))))
 
     ;; compile
     (let( (alist smart-compile-alist)
@@ -165,10 +165,10 @@ If arg, do compile interactively."
                          (and (local-variable-p 'compile-command)
                               compile-command))
                         (let ((command function))
-			  (setq command (smart-compile-replace command))
+                          (setq command (smart-compile-replace command))
                           (set (make-local-variable 'compile-command)
-			       command)))
- 			(call-interactively 'compile))
+                               command)))
+                    (call-interactively 'compile))
                 (eval function))
               (setq alist nil)
               (setq not-yet nil))
@@ -196,53 +196,53 @@ If arg, do compile interactively."
 commands to new file types."
   (interactive)
   (let ((name (buffer-file-name))
-	(alist smart-run-alist)
-	(rlist smart-compile-replace-alist)
-	(elist smart-executable-alist)
-	(executable nil)
-	(update t)
-	(case-fold-search nil))
+        (alist smart-run-alist)
+        (rlist smart-compile-replace-alist)
+        (elist smart-executable-alist)
+        (executable nil)
+        (update t)
+        (case-fold-search nil))
 
     (if (not name) (error "cannot get filename."))
 
     ;; dose the executable file exist and update?
     (let ((exfile (car elist)))
       (while (and elist (not executable))
-	;; r is a local rlist
-	(let ((r smart-compile-replace-alist))
-	  (while r
-	    (while (string-match (caar r) exfile)
-	      (setq exfile
-		    (replace-match
-		     (eval (cdar r)) t nil exfile)))
-	    (setq r (cdr r))))
-	(let ((file (concat (file-name-directory (buffer-file-name))
-			    exfile)))
-	  (if (file-readable-p file)
-	      (progn
-		(if (file-newer-than-file-p name file)
-		    (setq update nil))
-		(setq executable t))
-	    (setq exfile (cadr elist))))
-	(setq elist (cdr elist))))
+        ;; r is a local rlist
+        (let ((r smart-compile-replace-alist))
+          (while r
+            (while (string-match (caar r) exfile)
+              (setq exfile
+                    (replace-match
+                     (eval (cdar r)) t nil exfile)))
+            (setq r (cdr r))))
+        (let ((file (concat (file-name-directory (buffer-file-name))
+                            exfile)))
+          (if (file-readable-p file)
+              (progn
+                (if (file-newer-than-file-p name file)
+                    (setq update nil))
+                (setq executable t))
+            (setq exfile (cadr elist))))
+        (setq elist (cdr elist))))
 
     (if (and executable update)
-	(while alist
-	  (let ((run-type (caar alist))
-		(run-cmd (cdar alist)))
-	    (cond ((and (symbolp run-type)
-			(eq run-type major-mode))
-		   (eval run-cmd))
-		  ((and (stringp run-type)
-			(string-match run-type name))
-		   (progn (shell-command (smart-compile-replace run-cmd))
-			  (setq alist nil)))
-		  (t (setq alist (cdr alist))))))
+        (while alist
+          (let ((run-type (caar alist))
+                (run-cmd (cdar alist)))
+            (cond ((and (symbolp run-type)
+                        (eq run-type major-mode))
+                   (eval run-cmd))
+                  ((and (stringp run-type)
+                        (string-match run-type name))
+                   (progn (shell-command (smart-compile-replace run-cmd))
+                          (setq alist nil)))
+                  (t (setq alist (cdr alist))))))
 
       (if (and (not update) (y-or-n-p "File out of date, recompile? "))
-	  (smart-compile)
-	(if (y-or-n-p "Compile first? ")
-	    (smart-compile))))))
+          (smart-compile)
+        (if (y-or-n-p "Compile first? ")
+            (smart-compile))))))
 
 (provide 'smart-compile+)
 

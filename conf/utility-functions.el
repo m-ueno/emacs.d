@@ -119,18 +119,17 @@
 
 ;; カーソル動かさずにスクロール
 ;; http://norainu.net/mt/archives/2006/11/emacs_elisp.html
-;; for Emacs <=23
-(unless (fboundp 'scroll-up-line)
-  (defun scroll-up-line (n)
-    (interactive "p")
-    (previous-line n)
-    (scroll-down n))
-  (defun scroll-down-line (n)
-    (interactive "p")
-    (next-line n)
-    (scroll-up n)))
-(global-set-key "\M-n" 'scroll-up-line)
-(global-set-key "\M-p" 'scroll-down-line)
+                                        ;(unless (fboundp 'scroll-up-line)
+(defun scroll-up-line (n)
+  (interactive "p")
+  (previous-line n)
+  (scroll-down n))
+(defun scroll-down-line (n)
+  (interactive "p")
+  (next-line n)
+  (scroll-up n))
+(global-set-key "\M-p" 'scroll-up-line)
+(global-set-key "\M-n" 'scroll-down-line)
 
 ;; for cl-memo
 (fset 'memo

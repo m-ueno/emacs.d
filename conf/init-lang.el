@@ -243,8 +243,6 @@
 (require 'rvm)
 (rvm-use-default)
 
-(setq ruby-insert-encoding-magic-comment nil)
-
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files" t)
 (setq auto-mode-alist
@@ -252,3 +250,25 @@
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
 (setq ruby-deep-indent-paren-style nil) ; http://www.hinet.mydns.jp/tdiary/20060923.html
+
+;; http://d.hatena.ne.jp/eiel/20101106
+(require 'ruby-block)
+(setq ruby-block-highlight-toggle t)
+(defun ruby-mode-hook-ruby-block()
+  (ruby-block-mode t))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
+
+(defun ruby-mode-hook-init ()
+  "encodingを自動挿入しないようにする"
+  (remove-hook 'before-save-hook 'ruby-mode-set-encoding)
+  (defun ruby-mode-set-encoding () ()))
+(add-hook 'ruby-mode-hook 'ruby-mode-init)
+
+(defun my-ruby-mode-set-encoding ()
+  "set-encoding ruby-mode"
+  (interactive)
+  (ruby-mode-set-encoding))
+(define-key ruby-mode-map "\C-ce" 'my-ruby-mode-set-encoding)
+
+;; (setq ruby-insert-encoding-magic-comment nil)
+

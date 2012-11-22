@@ -56,21 +56,23 @@
 (load "init-flymake")
 ;(load "init-goby")
 (load "init-lang")
-(load "init-load")
+;(load "init-load")
 (load "init-magit")
+(load "init-markdown")
 ;(load "init-myopera")
 (load "init-outline")
-;(load "init-popwin")
+(load "init-popwin")
 (load "init-slime")             ; init-lispを統合
 (load "init-smartchr")
 (load "init-yas2")
-(load "init-yatex")             ; init-auctex/init-yatexを分離
+;(load "init-yatex")             ; init-auctex/init-yatexを分離
 
 (prefer-coding-system 'utf-8)
 
 ;; for auto-install
 ;(setq url-proxy-services '(("http" . "proxy.kuins.net:8080")))
 ;(setq url-proxy-services nil)
+(defun ruby-mode-set-encoding () ())
 
 ;; comment out 2011/07/14
 ;; (set-language-environment "Japanese")
@@ -91,3 +93,9 @@
  ;; If there is more than one, they won't work right.
  '(current-language-environment "Japanese")
  '(send-mail-function nil))
+
+;; org-tree-slite
+(when (require 'org-tree-slide nil t)
+  (org-tree-slide-simple-profile))
+(global-set-key (kbd "<f8>") 'org-tree-slide-mode)
+(global-set-key (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle)
