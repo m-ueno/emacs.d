@@ -51,7 +51,7 @@
 ;; 4-8 ファイルを自動保存する
 (require 'auto-save-buffers)
 (run-with-idle-timer 0.5 t 'auto-save-buffers)
-;(auto-save-buffers-toggle)
+(gdefkey "C-<f12>" 'auto-save-buffers-toggle)
 
 ;; 4-2 ファイル名がかぶった場合にバッファ名をわかりやすくする
 (require 'uniquify)

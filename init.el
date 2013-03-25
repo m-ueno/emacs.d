@@ -56,7 +56,7 @@
 (load "init-flymake")
 ;(load "init-goby")
 (load "init-lang")
-;(load "init-load")
+(load "init-load")
 (load "init-magit")
 (load "init-markdown")
 ;(load "init-myopera")
